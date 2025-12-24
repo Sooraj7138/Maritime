@@ -1,0 +1,2760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>SagarBot - Premium Chat Interface</title>
+      <link rel="icon" type="image/jpeg" href="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5959f3f4-2854-4f09-b9fb-af497926c1f3">
+      <style>
+:root {
+  --primary-blue: #2b8aef;
+  --primary-blue-dark: #0a6ed1;
+  --primary-blue-light: #5ca4f2;
+  --bg-gradient-start: #1e3a8a;
+  --bg-gradient-end: #2563eb;
+  --surface-white: #ffffff;
+  --surface-light: #f8fafc;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border-light: #e2e8f0;
+  --success-green: #10b981;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Chat Container */
+#chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Chat Toggle Button */
+.chat-toggle-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+  border: none;
+  box-shadow: var(--shadow-xl);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-toggle-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 25px 35px -5px rgba(43, 138, 239, 0.4);
+}
+
+.chat-toggle-button:active {
+  transform: scale(0.95);
+}
+
+.chat-toggle-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.chat-toggle-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.chat-toggle-button .chat-icon { display: inline-block; }
+.chat-toggle-button .close-icon { display: none; }
+.chat-toggle-button.active .chat-icon { display: none; }
+.chat-toggle-button.active .close-icon { display: inline-block; }
+
+  /* When Copilot tab/mode is active, show cross icon in lower-left */
+  body.copilot-active .chat-toggle-button .chat-icon { display: none; }
+  body.copilot-active .chat-toggle-button .close-icon { display: inline-block; }
+
+/* Chat Popup */
+.chat-popup {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  height: 600px;
+  max-height: 85vh;
+  background: rgba(0, 58, 145, 0.98);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.chat-popup.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+/* Copilot Mode */
+body.copilot-active #chat-widget {
+  bottom: auto;
+  top: 0;
+  right: 0;
+  z-index: 999999;
+}
+
+body.copilot-active .chat-popup {
+  bottom: auto;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 60px);
+  max-height: calc(100vh - 60px);
+  border-radius: 0;
+}
+
+body.copilot-active .chat-toggle-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  top: auto;
+  right: auto;
+}
+
+.copilot-close-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: #ff4444;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 999998;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.copilot-close-btn:hover {
+  background: #cc0000;
+}
+
+/* Chat Header */
+.chat-header {
+  background: #1e90ff;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px -10px rgba(30, 144, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+}
+
+.chat-header::before {
+  display: none;
+}
+
+.chat-bot-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1;
+}
+
+.chat-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.bot-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.bot-avatar-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  object-fit: cover;
+  box-shadow: var(--shadow-md);
+}
+
+.chat-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.icon-button:active {
+  transform: scale(0.95);
+}
+
+/* Chat Messages Area */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background: var(--surface-light);
+  scroll-behavior: smooth;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Message Styles */
+.message {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  animation: messageSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.bot {
+  flex-direction: row;
+}
+
+.message.user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.message-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.message.user .message-avatar {
+  background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+}
+
+.message-content {
+  max-width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.message-bubble {
+  padding: 12px 16px;
+  border-radius: 18px;
+  line-height: 1.5;
+  font-size: 14px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.message.bot .message-bubble {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  color: var(--text-dark);
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.message.user .message-bubble {
+  background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+  color: white;
+  border-bottom-right-radius: 4px;
+  margin-left: auto;
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.message-timestamp {
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 0 4px;
+}
+
+.message.user .message-timestamp {
+  text-align: right;
+}
+
+/* Quick Reply Buttons */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.quick-reply-btn {
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid rgba(30, 144, 255, 0.2);
+  border-radius: 24px;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.quick-reply-btn:hover {
+  background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(30, 144, 255, 0.4);
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  animation: messageSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.typing-indicator .message-avatar {
+  width: 36px;
+  height: 36px;
+}
+
+.typing-dots {
+  padding: 3px 5px;
+  border-radius: 18px;
+  border-bottom-left-radius: 4px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: typingDot 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingDot {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+/* Chat Input Area */
+.chat-input-area {
+  padding: 16px 20px;
+  background: white;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 24px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s;
+  background: var(--surface-light);
+}
+
+#chat-input:focus {
+  border-color: var(--primary-blue);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(43, 138, 239, 0.1);
+}
+
+#chat-input::placeholder {
+  color: var(--text-muted);
+}
+
+.send-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-md);
+}
+
+.send-button:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.send-button:active {
+  transform: scale(0.95);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Welcome Screen */
+.welcome-screen {
+  text-align: center;
+  padding: 10px 20px 10px 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  border-radius: 16px;
+  margin: 0px 20px 20px 20px;
+  box-shadow: 0 8px 24px rgba(30, 144, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-screen::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(30, 144, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, 20px);
+  }
+}
+
+.welcome-logo-container {
+  margin-bottom: 8px;
+  margin-top: 0;
+  animation: logoEntry 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes logoEntry {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.welcome-logo {
+  width: 200px;
+  height: auto;
+  filter: drop-shadow(0 8px 16px rgba(30, 144, 255, 0.15));
+  transition: transform 0.3s ease;
+}
+
+.welcome-logo:hover {
+  transform: scale(1.05);
+}
+
+.welcome-icon-animated {
+  font-size: 48px;
+  margin-bottom: 3px;
+  display: inline-block;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(0deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.welcome-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.brand-highlight {
+  background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  line-height: 1.6;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.welcome-features {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.feature-item {
+  padding: 4px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 90px;
+}
+
+.feature-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(30, 144, 255, 0.15);
+}
+
+/* .feature-icon {
+  font-size: 32px;
+} */
+
+.feature-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .chat-popup {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+  }
+  
+  #chat-widget {
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+  
+  .chat-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Pin Button */
+.attach-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-md);
+  font-size: 18px;
+}
+
+.attach-button:hover {
+  background: var(--primary-blue-dark);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.attach-button:active {
+  transform: scale(0.95);
+}
+
+.attach-button.active {
+  background: var(--primary-blue-dark);
+}
+
+/* Module Dropdown Panel */
+.module-dropdown {
+  position: absolute;
+  bottom: 70px;
+  left: 20px;
+  width: 300px;
+  max-height: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-light);
+  display: none;
+  flex-direction: column;
+  z-index: 10000;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.module-dropdown.active {
+  display: flex;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.module-dropdown-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-light);
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.module-dropdown-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.module-tag {
+  padding: 10px 16px;
+  cursor: pointer;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.module-tag:hover {
+  background: var(--surface-light);
+  border-left-color: var(--primary-blue);
+}
+
+.module-tag.selected {
+  background: rgba(43, 138, 239, 0.1);
+  border-left-color: var(--primary-blue);
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+/* FAQ Panel */
+.faq-panel {
+  position: absolute;
+  bottom: 70px;
+  left: 20px;
+  width: 350px;
+  max-height: 450px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-light);
+  display: none;
+  flex-direction: column;
+  z-index: 10000;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-panel.active {
+  display: flex;
+}
+
+.faq-panel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.faq-panel-title {
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+}
+
+.faq-panel-back {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq-panel-back:hover {
+  opacity: 0.8;
+}
+
+.faq-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  padding: 12px 14px;
+  background: var(--surface-light);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-dark);
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+.faq-item:hover {
+  background: linear-gradient(135deg, rgba(43, 138, 239, 0.1) 0%, rgba(43, 138, 239, 0.05) 100%);
+  border-color: var(--primary-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 138, 239, 0.15);
+}
+
+.faq-item:active {
+  transform: translateY(0);
+}
+
+/* Markdown HTML Styling */
+.message-bubble h1,
+.message-bubble h2,
+.message-bubble h3,
+.message-bubble h4,
+.message-bubble h5,
+.message-bubble h6 {
+  margin: 12px 0 8px 0;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.message-bubble h1 { font-size: 20px; }
+.message-bubble h2 { font-size: 18px; }
+.message-bubble h3 { font-size: 16px; }
+.message-bubble h4 { font-size: 15px; }
+.message-bubble h5 { font-size: 14px; }
+.message-bubble h6 { font-size: 13px; }
+
+.message-bubble p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.message-bubble ul,
+.message-bubble ol {
+  margin: 8px 0 8px 20px;
+  padding-left: 0;
+}
+
+.message-bubble li {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+.message-bubble code {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.message-bubble pre {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 10px 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 8px 0;
+  border-left: 3px solid var(--primary-blue);
+}
+
+.message-bubble pre code {
+  background: none;
+  padding: 0;
+  font-size: 12px;
+}
+
+.message-bubble blockquote {
+  border-left: 3px solid var(--primary-blue);
+  margin: 8px 0;
+  padding-left: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.message-bubble strong {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.message-bubble em {
+  font-style: italic;
+}
+
+.message-bubble a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(43, 138, 239, 0.3);
+  transition: all 0.2s;
+}
+
+.message-bubble a:hover {
+  border-bottom-color: var(--primary-blue);
+}
+
+.message-bubble table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0;
+  font-size: 12px;
+}
+
+.message-bubble th {
+  background: rgba(43, 138, 239, 0.1);
+  padding: 8px;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid var(--border-light);
+}
+
+.message-bubble td {
+  padding: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.message-bubble hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 12px 0;
+}
+
+/* AG-Grid Styles in Chat */
+.ag-theme-quartz {
+  --ag-borders-color: var(--border-light);
+  --ag-header-background-color: rgba(43, 138, 239, 0.1);
+  --ag-row-hover-color: rgba(43, 138, 239, 0.05);
+  --ag-font-size: 12px;
+}
+
+.message-grid-container {
+  margin-top: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  max-height: 300px;
+  background: white;
+}
+
+.message-grid-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(43, 138, 239, 0.12) 0%, rgba(43, 138, 239, 0.06) 100%);
+  border-bottom: 2px solid var(--border-light);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.3px;
+  transition: flex-direction 0.3s ease;
+}
+
+/* When copilot is expanded (full width mode) */
+body.copilot-active .message-grid-header,
+body.chat-expanded .message-grid-header,
+.chat-popup.expanded .message-grid-header {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.grid-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* When copilot is expanded */
+body.copilot-active .grid-controls,
+body.chat-expanded .grid-controls,
+.chat-popup.expanded .grid-controls {
+  width: auto;
+  flex-wrap: nowrap;
+}
+
+.grid-btn {
+  padding: 8px 14px;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(43, 138, 239, 0.2);
+}
+
+.grid-btn:hover {
+  background: linear-gradient(135deg, var(--primary-blue-light) 0%, var(--primary-blue) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 138, 239, 0.35);
+}
+
+.grid-btn:active {
+  transform: translateY(0);
+}
+
+.grid-btn.secondary {
+  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.grid-btn.secondary:hover {
+  background: linear-gradient(135deg, #475569 0%, #334155 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Minimized Grid Styles */
+.grid-minimized {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  background: white;
+  margin-top: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid-minimized-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(43, 138, 239, 0.12) 0%, rgba(43, 138, 239, 0.06) 100%);
+  border-bottom: 2px solid var(--border-light);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.3px;
+  transition: all 0.3s ease;
+}
+
+.grid-minimized:hover .grid-minimized-header {
+  background: linear-gradient(135deg, rgba(43, 138, 239, 0.18) 0%, rgba(43, 138, 239, 0.12) 100%);
+}
+
+/* Tab Container Styles */
+.data-tabs-container {
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  background: white;
+}
+
+.data-tabs-header {
+  display: flex;
+  gap: 0;
+  background: #f8fafc;
+  border-bottom: 2px solid var(--border-light);
+  padding: 0;
+}
+
+.data-tab-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+.data-tab-btn:hover {
+  background: rgba(43, 138, 239, 0.05);
+  color: var(--text-dark);
+}
+
+.data-tab-btn.active {
+  color: var(--primary-blue);
+  background: rgba(43, 138, 239, 0.08);
+}
+
+.data-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-blue);
+}
+
+.data-tabs-content {
+  padding: 16px;
+  min-height: 300px;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.data-tab-pane {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.data-tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+}
+
+.table-wrapper .ag-theme-quartz {
+  min-width: 100%;
+  width: auto !important;
+  height: auto;
+}
+
+.table-wrapper .ag-theme-alpine {
+  min-width: 100%;
+  width: auto !important;
+  height: auto;
+}
+
+.ag-theme-quartz {
+  --ag-borders-color: var(--border-light);
+  --ag-header-background-color: rgba(43, 138, 239, 0.1);
+  --ag-row-hover-color: rgba(43, 138, 239, 0.05);
+  --ag-font-size: 12px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  min-width: 600px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.chart-type-btn {
+  padding: 8px 14px;
+  background: var(--surface-light);
+  border: 2px solid var(--border-light);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: all 0.2s;
+}
+
+.chart-type-btn:hover {
+  border-color: var(--primary-blue);
+  background: rgba(43, 138, 239, 0.05);
+}
+
+.chart-type-btn.active {
+  background: var(--primary-blue);
+  color: white;
+  border-color: var(--primary-blue);
+}
+
+/* Scrollbar Styling for Tables and Charts */
+.table-wrapper::-webkit-scrollbar,
+.chart-wrapper::-webkit-scrollbar,
+.data-tabs-content::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track,
+.chart-wrapper::-webkit-scrollbar-track,
+.data-tabs-content::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb,
+.chart-wrapper::-webkit-scrollbar-thumb,
+.data-tabs-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover,
+.chart-wrapper::-webkit-scrollbar-thumb:hover,
+.data-tabs-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+    </style>
+
+<!-- AG Grid code -->
+ <!-- AG Grid CSS Theme (choose one) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-quartz.css" />
+
+
+<!-- AG Grid Community (required) -->
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+
+<!-- AG Grid Enterprise (for charts and advanced features) -->
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@33.3.2/dist/ag-grid-enterprise.min.js"></script>
+
+<!-- AG Charts Enterprise (for chart visualization) -->
+<script src="https://cdn.jsdelivr.net/npm/ag-charts-enterprise@11.3.2/dist/umd/ag-charts-enterprise.min.js"></script>
+
+<!-- jsPDF for PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- jsPDF AutoTable plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+<!-- Font Awesome (for icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+<!-- Your AG Grid JavaScript file -->
+<!-- <script src="ag-grid-standalone.js"></script> -->
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css"
+  />
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css"
+  />
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.noStyle.js"></script>
+
+</head>
+<body>
+    <!-- Chat Widget Container -->
+    <div id="chat-widget">
+        <!-- Chat Popup Window -->
+        <div id="chat-popup" class="chat-popup">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-bot-info">
+                    <div class="bot-avatar">
+                        <img src="../public//favicon.png" alt="SagarBot" class="bot-avatar-img" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <span class="chat-title">SagarBot</span>
+                </div>
+                <div class="header-buttons">
+                    <button id="expand-chat" class="icon-button" aria-label="Expand chat" title="Expand">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button id="close-chat" class="icon-button" aria-label="Close chat" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Message Area -->
+            <div id="chat-messages" class="chat-messages">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen">
+                    <!-- <div class="welcome-logo-container">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/c3c559c5-a5bb-4a94-8ab8-e1520f68d466" alt="SagarBot Logo" class="welcome-logo">
+                    </div> -->
+                    <div class="welcome-icon-animated">⚓</div>
+                    <h2 class="welcome-title">Welcome to <span class="brand-highlight">SagarBot</span>!</h2>
+                    <!-- <p class="welcome-subtitle">Your intelligent maritime assistant for ports, projects, and shipping updates.</p> -->
+                    <div class="welcome-features">
+                        <div class="feature-item">
+                            <span class="feature-icon"><img src="../public/lightbulb.svg" height="22px" width="22px"></span>
+                            <span class="feature-text">Projects of Major Ports</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><img src="../public/newspaper.svg" height="22px" width="22px"></span>
+                            <span class="feature-text">Recent news about Ministry of ports and shipping</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><img src="../public/dashboard.svg" height="20px" width="20px"></span>
+                            <span class="feature-text">Overview of Major Ports</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><img src="../public/notebook.svg" height="22px" width="22px"></span>
+                            <span class="feature-text">What can Sagarbot do?</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Bot Message -->
+                <div class="message bot">
+                    <div class="message-avatar">
+                        <img src="../public/favicon.png" alt="Bot" class="message-avatar-img">
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            👋 Hey there! I'm Sagarbot, your friendly assistant. Feel free to ask me anything ,I'm here to help! You can also explore more on our <a href="https://ntcpwcit.in/sagarmanthan/chatbot" style="text-decoration: none;">SagarChat</a>
+                        </div>
+                        <span class="message-timestamp">Just now</span>
+                    </div>
+                </div>
+
+                <!-- Quick Reply Suggestions (module-driven) -->
+                <!-- Removed: Module suggestions now available via attach button -->
+            </div>
+
+            <!-- Chat Input Area -->
+            <div id="chat-input-container" class="chat-input-area">
+                <button type="button" id="attach-button" class="attach-button" aria-label="Toggle module selector" title="Module Selector">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <input type="text" id="chat-input" placeholder="Type your message..." aria-label="Message input">
+                <button type="button" id="send-button" class="send-button" aria-label="Send message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+
+                <!-- Module Dropdown (appears when pin clicked) -->
+                <div id="module-dropdown" class="module-dropdown">
+                    <div class="module-dropdown-header">Select a Module</div>
+                    <div id="module-dropdown-content" class="module-dropdown-content"></div>
+                </div>
+
+                <!-- FAQ Panel (appears after module selected) -->
+                <div id="faq-panel" class="faq-panel">
+                    <div class="faq-panel-header">
+                        <span class="faq-panel-title" id="faq-panel-title">FAQs</span>
+                        <button class="faq-panel-back" id="faq-panel-back" aria-label="Back to modules">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div id="faq-panel-content" class="faq-panel-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Toggle Button -->
+        <button type="button" id="chat-toggle-button" class="chat-toggle-button" aria-label="Open chat">
+          <i class="fas fa-comment-dots chat-icon"></i>
+          <i class="fas fa-times close-icon"></i>
+        </button>
+
+        <!-- Copilot Close Button (shown only in copilot mode) -->
+        <button type="button" class="copilot-close-btn" aria-label="Close copilot" title="Close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Font Awesome CDN -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+
+    <!-- Marked.js for Markdown to HTML conversion -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- AG-Grid Community Edition -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-quartz.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@33.3.2/dist/ag-grid-enterprise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@33.3.2/dist/ag-grid-enterprise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-charts-enterprise@11.3.2/dist/umd/ag-charts-enterprise.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.7.0/jspdf.plugin.autotable.min.js"></script>
+
+    <script>
+// Chat functionality
+(function() {
+    let chatToggle = document.getElementById('chat-toggle-button');
+    let chatPopup = document.getElementById('chat-popup');
+    let closeChat = document.getElementById('close-chat');
+    let sendButton = document.getElementById('send-button');
+    let chatInput = document.getElementById('chat-input');
+    let chatMessages = document.getElementById('chat-messages');
+    let quickReplyButtons = document.querySelectorAll('.quick-reply-btn');
+    let expandChat = document.getElementById('expand-chat');
+    
+    let messageCount = 0;
+
+    // Toggle chat popup
+    function toggleChat() {
+        // In copilot mode, close button should not close the chat, only minimize
+        if (isCopilotMode && closeChat.click) {
+            // Prevent close in copilot mode
+            return;
+        }
+        chatPopup.classList.toggle('active');
+        chatToggle.classList.toggle('active');
+        if (chatPopup.classList.contains('active')) {
+            chatInput.focus();
+        }
+    }
+
+    chatToggle.addEventListener('click', toggleChat);
+    closeChat.addEventListener('click', toggleChat);
+
+    // Prevent any accidental <form> submissions on the page which can cause a full reload
+    // This is a safety net in case the chat is embedded into a page that contains forms.
+    document.addEventListener('submit', (e) => {
+      if (e && typeof e.preventDefault === 'function') {
+        e.preventDefault();
+        console.warn('Blocked form submit to prevent page reload');
+      }
+    });
+
+    // Extra safeguard: if Enter is pressed inside an input that belongs to a form,
+    // prevent the default submit and trigger sendMessage instead.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && e.target && e.target.tagName === 'INPUT') {
+        const inputEl = e.target;
+        if (inputEl.form) {
+          e.preventDefault();
+          // call sendMessage() asynchronously (function is hoisted)
+          try { sendMessage(); } catch (err) { console.warn('sendMessage call failed:', err); }
+        }
+      }
+    });
+
+    // ===== COPILOT MODE =====
+    let isCopilotMode = false;
+    
+    // Global function to set copilot mode (callable from outside)
+    window.setCopilotActive = function(active) {
+      isCopilotMode = active;
+      const copilotCloseBtn = document.querySelector('.copilot-close-btn');
+      if (active) {
+        document.body.classList.add('copilot-active');
+        chatPopup.classList.add('copilot-active');
+        if (copilotCloseBtn) copilotCloseBtn.style.display = 'block';
+        // ensure toggle has active class so CSS shows the close icon and moves it
+        chatToggle.classList.add('active');
+      } else {
+        document.body.classList.remove('copilot-active');
+        chatPopup.classList.remove('copilot-active');
+        if (copilotCloseBtn) copilotCloseBtn.style.display = 'none';
+        chatToggle.classList.remove('active');
+      }
+    };
+    
+    // Detect if running in copilot context and auto-activate
+    if (window.parent !== window) {
+        // This is being run inside an iframe (likely Copilot)
+        window.setCopilotActive(true);
+    }
+
+    // Get current time
+    function getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    }
+
+    // Detect if content is tabular data (array of objects)
+    function isTabularData(data) {
+      if (!Array.isArray(data)) return false;
+      if (data.length === 0) return false;
+      // Check if all items are objects and have similar structure
+      return data.every(item => typeof item === 'object' && item !== null && !Array.isArray(item));
+    }
+
+    function extractTableFromMetadata (responseArray) {
+        const meta = Array.isArray(responseArray) ? responseArray[0] : responseArray;
+
+        if (!meta || !Array.isArray(meta.data) || meta.data.length === 0) {
+          console.warn("Invalid or empty metadata format");
+          return null;
+        }
+
+        const rows = meta.data;
+        const columns = Object.keys(rows[0]);
+        // Use fixed widths (avoid flex) so columns don't compress and horizontal scroll appears
+        const columnDefs = columns.map(key => ({
+          field: key,
+          headerName: key.charAt(0).toUpperCase() + key.slice(1),
+          sortable: true,
+          filter: true,
+          resizable: true,
+          width: 150,
+          minWidth: 100
+        }));
+
+        return { columnDefs, rows };
+      }
+
+    function toAgGridColumns(columnNames) {
+        return columnNames.map(col => ({
+            field: col,
+            headerName: col.replace(/_/g, " ")
+        }));
+    }
+
+    function renderAgGrid(container, responseArray) {
+        const result = extractTableFromMetadata(responseArray);
+        if (!result) return;
+
+        const agColumns = result.columnDefs;
+        const agRows = result.rows;
+
+        // Create tab container
+        const tabsContainer = document.createElement('div');
+        tabsContainer.className = 'data-tabs-container';
+
+        // Create tabs header
+        const tabsHeader = document.createElement('div');
+        tabsHeader.className = 'data-tabs-header';
+
+        const tableTabBtn = document.createElement('button');
+        tableTabBtn.className = 'data-tab-btn active';
+        tableTabBtn.innerHTML = '<i class="fas fa-table"></i> Table';
+        tableTabBtn.type = 'button';
+
+        const chartsTabBtn = document.createElement('button');
+        chartsTabBtn.className = 'data-tab-btn';
+        chartsTabBtn.innerHTML = '<i class="fas fa-chart-bar"></i> Charts';
+        chartsTabBtn.type = 'button';
+
+        tabsHeader.appendChild(tableTabBtn);
+        tabsHeader.appendChild(chartsTabBtn);
+
+        // Create tabs content wrapper
+        const tabsContent = document.createElement('div');
+        tabsContent.className = 'data-tabs-content';
+
+        // Create table tab pane
+        const tablePane = document.createElement('div');
+        tablePane.className = 'data-tab-pane active';
+        tablePane.id = 'table-pane-' + Date.now();
+
+        const tableWrapper = document.createElement('div');
+        tableWrapper.className = 'table-wrapper';
+
+        const gridDiv = document.createElement('div');
+        gridDiv.className = 'ag-theme-quartz';
+        gridDiv.id = 'grid_' + Date.now();
+        gridDiv.style.width = '100%';
+        gridDiv.style.boxSizing = 'border-box';
+
+        const estimatedRowHeight = 20;
+        // const totalHeight = Math.min(600, Math.max(250, estimatedRowHeight * agRows.length + 50));
+        // gridDiv.style.height = `${totalHeight}px`;
+
+        // Ensure the grid can overflow horizontally: compute min-width based on column widths
+        try {
+          const totalColsWidth = agColumns.reduce((sum, c) => sum + (c.width || 150), 0);
+          // Set a minimum width so columns don't compress when Copilot is not expanded
+          gridDiv.style.minWidth = Math.max(totalColsWidth, 400) + 'px';
+        } catch (err) {
+          // fallback: do nothing
+          console.warn('Could not compute grid minWidth', err);
+        }
+
+        tableWrapper.appendChild(gridDiv);
+        tablePane.appendChild(tableWrapper);
+
+        // Create charts tab pane
+        const chartsPane = document.createElement('div');
+        chartsPane.className = 'data-tab-pane';
+        chartsPane.id = 'charts-pane-' + Date.now();
+
+        const chartControls = document.createElement('div');
+        chartControls.className = 'chart-controls';
+
+        const chartTypes = ['groupedColumn', 'line', 'scatter', 'pie', 'bar'];
+        const chartTypeButtons = {};
+
+        chartTypes.forEach((type, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'chart-type-btn' + (index === 0 ? ' active' : '');
+            btn.type = 'button';
+            btn.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+            btn.dataset.chartType = type;
+            chartControls.appendChild(btn);
+            chartTypeButtons[type] = btn;
+        });
+
+        const chartWrapper = document.createElement('div');
+        chartWrapper.className = 'chart-wrapper';
+        chartWrapper.id = 'chart_' + Date.now();
+
+        chartsPane.appendChild(chartControls);
+        chartsPane.appendChild(chartWrapper);
+
+        // Assemble tabs
+        tabsContent.appendChild(tablePane);
+        tabsContent.appendChild(chartsPane);
+
+        tabsContainer.appendChild(tabsHeader);
+        tabsContainer.appendChild(tabsContent);
+
+        container.appendChild(tabsContainer);
+
+        // Initialize AG Grid with all options
+        const isExpandedNow = document.body.classList.contains('chat-expanded') || (document.querySelector('.chat-popup') && document.querySelector('.chat-popup').classList.contains('expanded'));
+        const gridOptions = {
+          theme: 'legacy',
+          columnDefs: agColumns,
+          rowData: agRows,
+          animateRows: true,
+          cellSelection: true,
+          enableCharts: true,
+          defaultColDef: {
+            sortable: true,
+            filter: true,
+            width: 100,
+            minWidth: 80,
+            flex: 1,
+          },
+          domLayout: 'autoHeight',
+          suppressHorizontalScroll: true,
+          pagination: true,
+          paginationPageSize: 7,
+          // enable auto page sizing only when Copilot is NOT expanded
+          paginationAutoPageSize: !isExpandedNow,
+          onCellValueChanged: () => {
+                gridOptions.api.refreshCells({ force: true });
+          }
+        };
+
+        let gridApi = null;
+        let currentChartType = 'groupedColumn';
+
+        try {
+          gridApi = agGrid.createGrid(gridDiv, gridOptions);
+        } catch (e) {
+          console.error('ag-Grid render error:', e);
+          return null;
+        }
+
+        // Tab switching logic
+        tableTabBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            tableTabBtn.classList.add('active');
+            chartsTabBtn.classList.remove('active');
+            tablePane.classList.add('active');
+            chartsPane.classList.remove('active');
+        });
+
+        chartsTabBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            chartsTabBtn.classList.add('active');
+            tableTabBtn.classList.remove('active');
+            chartsPane.classList.add('active');
+            tablePane.classList.remove('active');
+
+            // Generate chart when charts tab is clicked
+            if (chartWrapper.innerHTML === '' && gridApi) {
+                generateChart(gridApi, gridOptions, chartWrapper, currentChartType);
+            }
+        });
+
+        // Chart type selection
+        Object.keys(chartTypeButtons).forEach(type => {
+            chartTypeButtons[type].addEventListener('click', (e) => {
+                e.preventDefault();
+                currentChartType = type;
+
+                // Update active state
+                Object.keys(chartTypeButtons).forEach(t => {
+                    chartTypeButtons[t].classList.remove('active');
+                });
+                chartTypeButtons[type].classList.add('active');
+
+                // Regenerate chart
+                if (gridApi) {
+                    chartWrapper.innerHTML = '';
+                    generateChart(gridApi, gridOptions, chartWrapper, type);
+                }
+            });
+        });
+
+        return tabsContainer;
+    }
+
+    function generateChart(gridApi, gridOptions, chartWrapper, chartType) {
+        try {
+            if (gridApi.getDisplayedRowCount() === 0) {
+                chartWrapper.innerHTML = '<p style="color: var(--text-muted); text-align: center;">No data available to generate chart.</p>';
+                return;
+            }
+
+            const allColumns = gridOptions.columnDefs;
+            const categoryCol = allColumns.find(col => !col.type?.includes('numericColumn'))?.field;
+            const valueCols = allColumns
+                .filter(col => col.type?.includes('numericColumn') || typeof gridOptions.rowData[0]?.[col.field] === 'number')
+                .map(col => col.field);
+
+            if (!categoryCol || valueCols.length === 0) {
+                chartWrapper.innerHTML = '<p style="color: var(--text-muted); text-align: center;">No suitable columns found for chart.</p>';
+                return;
+            }
+
+            const cellRange = {
+                rowStartIndex: 0,
+                rowEndIndex: Math.min(20, gridApi.getDisplayedRowCount() - 1),
+                columns: [categoryCol, ...valueCols]
+            };
+
+            gridApi.createRangeChart({
+                cellRange,
+                chartType: chartType,
+                chartContainer: chartWrapper,
+                suppressChartRanges: true
+            });
+        } catch (e) {
+            console.error('Chart generation error:', e);
+            chartWrapper.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Error generating chart.</p>';
+        }
+    }
+
+    function normalizeBackendData(buffer) {
+      // buffer = array of backend messages
+      let text = "";
+      for (const obj of buffer) {
+        if (obj.type === "chunk") {
+          text += obj.content;   // append text chunks
+        }
+        if (obj.type === "metadata") {
+          text += JSON.stringify(obj.data); // embed JSON directly
+        }
+      }
+
+      return text;
+    }
+
+    // Parse JSON-like strings that might be embedded in response
+    function extractTabularData(text) {
+      try {
+        if (typeof text !== 'string') {
+          text = JSON.stringify(text);
+        }
+
+        const matches = text.match(/\[\s*\{[\s\S]*?\}\s*\]/g);
+        if (!matches) return null;
+
+        for (const match of matches) {
+          try {
+            const parsed = JSON.parse(match);
+            if (Array.isArray(parsed) &&
+                parsed.length > 0 &&
+                typeof parsed[0] === 'object' &&
+                !Array.isArray(parsed[0])) {
+              return parsed;
+            }
+          } catch (e) {
+            continue;
+          }
+        }
+      } catch (err) {
+        console.error("extractTabularData error:", err);
+      }
+
+      return null;
+    }
+
+
+    // Render ag-grid table for data
+    // function renderAgGrid(container, data) {
+    //   if (!isTabularData(data)) return null;
+
+    //   const gridDiv = document.createElement('div');
+    //   gridDiv.className = 'ag-theme-quartz';
+    //   gridDiv.style.height = '250px';
+
+    //   const columnDefs = Object.keys(data[0]).map(key => ({
+    //     field: key,
+    //     headerName: key.charAt(0).toUpperCase() + key.slice(1),
+    //     sortable: true,
+    //     filter: true,
+    //     resizable: true,
+    //     flex: 1,
+    //     minWidth: 80
+    //   }));
+
+    //   const gridOptions = {
+    //     columnDefs,
+    //     rowData: data,
+    //     animateRows: true,
+    //     defaultColDef: {
+    //       sortable: true,
+    //       filter: true,
+    //       resizable: true,
+    //       flex: 1
+    //     },
+    //     domLayout: 'autoHeight',
+    //     suppressHorizontalScroll: false,
+    //     suppressVerticalScroll: false,
+    //     pagination: true,
+    //     paginationPageSize: 10
+    //   };
+
+    //   try {
+    //     agGrid.createGrid(gridDiv, gridOptions);
+    //     container.appendChild(gridDiv);
+    //     return gridDiv;
+    //   } catch (e) {
+    //     console.error('ag-Grid render error:', e);
+    //     return null;
+    //   }
+      
+    // }
+
+    // Add grid visualization button and controls
+    function addGridControls(container, data, gridDiv, title) {
+      const header = document.createElement('div');
+      header.className = 'message-grid-header';
+      const uniqueId = Date.now();
+      header.innerHTML = `
+        <span class="table-title">${title}</span>
+        <div class="grid-controls">
+          <button class="grid-btn" id="grid-export-csv-${uniqueId}" title="Export CSV">
+            <i class="fas fa-download"></i> CSV
+          </button>
+          <button class="grid-btn" id="grid-export-pdf-${uniqueId}" title="Export PDF">
+            <i class="fas fa-file-pdf"></i> PDF
+          </button>
+          <button class="grid-btn secondary" id="grid-minimize-${uniqueId}" title="Minimize">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+        </div>
+      `;
+      header.querySelector('.table-title').style.fontSize = '18px';
+      header.querySelector('.table-title').style.fontFamily = 'IBM Plex Sans, sans-serif';
+      header.querySelector('.table-title').style.fontWeight = '500';
+
+      gridDiv.insertBefore(header, gridDiv.firstChild);
+      
+      // Store the original parent for restoration
+      let isMinimized = false;
+      let minimizedParent = null;
+      const minimizeBtn = document.getElementById(`grid-minimize-${uniqueId}`);
+
+      // CSV export
+      document.getElementById(`grid-export-csv-${uniqueId}`).addEventListener('click', () => {
+        const csv = [
+          Object.keys(data[0]).join(','),
+          ...data.map(row => Object.values(row).map(v => `"${v}"`).join(','))
+        ].join('\n');
+
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data-export.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
+
+      // PDF export
+      document.getElementById(`grid-export-pdf-${uniqueId}`).addEventListener('click', () => {
+        try {
+          // Get jsPDF - it could be in window.jspdf or window.jsPDF
+          const jsPDFModule = window.jspdf || window.jsPDF;
+          
+          if (!jsPDFModule) {
+            throw new Error('jsPDF library not loaded');
+          }
+          
+          // Create jsPDF instance - handle both UMD and other formats
+          const jsPDFConstructor = jsPDFModule.jsPDF || jsPDFModule;
+          const doc = new jsPDFConstructor();
+          
+          const columns = Object.keys(data[0]);
+          const rows = data.map(item => columns.map(col => {
+            const value = item[col];
+            return value !== null && value !== undefined ? String(value) : '';
+          }));
+          
+          // Use autoTable if available
+          if (typeof doc.autoTable === 'function') {
+            doc.autoTable({
+              head: [columns],
+              body: rows,
+              margin: 10,
+              styles: { 
+                fontSize: 10,
+                cellPadding: 5
+              },
+              headStyles: { 
+                fillColor: [43, 138, 239],
+                textColor: [255, 255, 255],
+                fontStyle: 'bold'
+              },
+              alternateRowStyles: {
+                fillColor: [240, 245, 250]
+              }
+            });
+          } else {
+            // Fallback if autoTable is not available
+            throw new Error('autoTable plugin not loaded');
+          }
+          
+          doc.save('data-export.pdf');
+        } catch (err) {
+          console.error('PDF export error:', err);
+          console.error('Available on window:', {
+            hasJsPDF: !!window.jspdf,
+            hasJsPDFAlt: !!window.jsPDF,
+            hasAutoTable: window.jspdf && typeof window.jspdf.autoTable === 'function'
+          });
+          alert('Error exporting PDF: ' + (err.message || 'Unknown error') + '. Please try again.');
+        }
+      });
+
+      // Minimize/Expand toggle (instant - no animation)
+      minimizeBtn.addEventListener('click', () => {
+        const minId = `grid-minimized-${uniqueId}`;
+        const existingMin = document.getElementById(minId);
+
+        function makeMinContainer() {
+          const c = document.createElement('div');
+          c.className = 'grid-minimized';
+          c.id = minId;
+          c.innerHTML = `
+            <div class="grid-minimized-header">
+              <span>${title}</span>
+              <button class="grid-btn secondary" id="grid-expand-${uniqueId}" title="Expand">
+                <i class="fas fa-chevron-down"></i>
+              </button>
+            </div>`;
+          return c;
+        }
+
+        if (!existingMin) {
+          // Create minimized placeholder and hide grid immediately
+          const minC = makeMinContainer();
+          gridDiv.parentNode.insertBefore(minC, gridDiv);
+          gridDiv.style.display = 'none';
+          // scroll into view without animation
+          setTimeout(() => minC.scrollIntoView({ behavior: 'auto', block: 'nearest' }), 10);
+
+          // wire expand (instant)
+          const expBtn = document.getElementById(`grid-expand-${uniqueId}`);
+          if (expBtn) expBtn.addEventListener('click', () => {
+            const el = document.getElementById(minId);
+            if (el) el.remove();
+            gridDiv.style.display = '';
+            setTimeout(() => gridDiv.scrollIntoView({ behavior: 'auto', block: 'nearest' }), 10);
+          });
+
+          minimizeBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+        } else {
+          // Expand: remove minimized placeholder and show grid immediately
+          existingMin.remove();
+          gridDiv.style.display = '';
+          setTimeout(() => gridDiv.scrollIntoView({ behavior: 'auto', block: 'nearest' }), 10);
+          minimizeBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        }
+      });
+    }
+
+    // Add typing indicator inside message bubble
+    function showTypingIndicator(bubbleElement) {
+      // Append typing dots inside the bubble. If bubble already has content,
+      // we insert the indicator at the end so it can be removed later.
+      const dots = document.createElement('div');
+      dots.className = 'typing-dots';
+      dots.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+      // Remove any existing typing-dots first to avoid duplicates
+      const existing = bubbleElement.querySelector('.typing-dots');
+      if (existing) existing.remove();
+      bubbleElement.appendChild(dots);
+    }
+
+    function hideTypingIndicator(bubbleElement) {
+      // Remove only the typing-dots element so we don't clear the bubble's content
+      if (!bubbleElement) return;
+      const dots = bubbleElement.querySelector('.typing-dots');
+      if (dots) dots.remove();
+    }
+
+    // Add message to chat
+    function addMessage(text, isUser = false) {
+        messageCount++;
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+        
+        const timestamp = getCurrentTime();
+        
+        const avatarHTML = isUser 
+            ? '<div class="message-avatar"><img src="../public/contacts.png" height="22px" width="22px"></div>'
+            : '<div class="message-avatar"><img src="../public/favicon.png" alt="Bot" class="message-avatar-img"></div>';
+        
+        messageDiv.innerHTML = `
+            ${avatarHTML}
+            <div class="message-content">
+                <div class="message-bubble">${text}</div>
+                <span class="message-timestamp">${timestamp}</span>
+            </div>
+        `;
+        
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        // TTS if enabled
+        if (!isUser && isTTSEnabled && 'speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utterance);
+        }
+    }
+
+// ==================== EVENT HANDLING FIX ====================
+
+// Global flag to track if we're processing a response
+let isProcessingResponse = false;
+
+// Completely override the sendMessage function
+async function sendMessage(event) {
+    // Always prevent default and stop propagation
+    if (event) {
+        event.preventDefault();
+    }
+    
+    // Prevent concurrent requests
+    if (isProcessingResponse) {
+        console.log('Already processing a response, please wait...');
+        return;
+    }
+
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    isProcessingResponse = true;
+    
+    // Add user message
+    addMessage(message, true);
+    chatInput.value = '';
+    sendButton.disabled = true;
+
+    // Create a single assistant bubble that we'll update progressively
+    const botMessageDiv = document.createElement('div');
+    botMessageDiv.className = 'message bot';
+    const avatarHTML = '<div class="message-avatar"><img src="../public/favicon.png" alt="Bot" class="message-avatar-img"></div>';
+    const bubbleId = 'assistant-bubble-' + Date.now();
+    botMessageDiv.innerHTML = `\
+      ${avatarHTML}\
+      <div class="message-content">\
+        <div id="${bubbleId}" class="message-bubble"></div>\
+        <span class="message-timestamp">${getCurrentTime()}</span>\
+      </div>`;
+    chatMessages.appendChild(botMessageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    const messageContent = botMessageDiv.querySelector(".message-content");
+
+    // let messageContent = document.querySelectorAll('.message-content')
+    // let sampleDiv = document.createElement('div');
+    // sampleDiv.className = 'sample-div'
+    // messageContent.appendChild(sampleDiv)
+
+    try {
+      const bubble = document.getElementById(bubbleId);
+      if (!bubble) {
+        throw new Error('Failed to create message bubble');
+      }
+
+      // show typing/loading indicator while waiting for first chunk
+      showTypingIndicator(bubble);
+
+      let fullContent = '';
+      let firstChunk = true;
+      
+      // Build request payload
+      const requestPayload = {
+        query: message,
+        user_id: "default_user",
+        session_id: SESSION_ID,
+        message_type: "text"
+      };
+
+      console.log('Sending chat request to:', CHAT_ENDPOINT);
+      console.log('Request payload:', requestPayload);
+
+      // Send request to backend API
+      const response = await fetch(CHAT_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestPayload)
+      });
+
+      console.log('Response status:', response.status, response.statusText);
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      if (!response.body) {
+        throw new Error('Response body is empty');
+      }
+
+      // Parse streaming response
+      const reader = response.body.getReader();
+      console.log('reader ',reader);
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) {
+          console.log('Stream read complete');
+          break;
+        }
+
+        buffer += decoder.decode(value, { stream: true });
+        console.log('Received chunk:', buffer);
+        // Split into complete SSE events by blank line
+        const parts = buffer.split(/\r?\n\r?\n/);
+        buffer = parts.pop() || '';
+        for (const part of parts) {
+          if (!part.trim()) continue;
+
+          const dataLines = part.split(/\r?\n/).filter(l => l.trim().startsWith('data:'));
+          if (dataLines.length === 0) continue;
+
+          const dataStr = dataLines.map(l => l.replace(/^data:\s*/i, '')).join('\n');
+
+          if (dataStr === '[DONE]') {
+            hideTypingIndicator(bubble);
+            console.info('Stream complete (DONE sentinel)');
+            continue;
+          }
+
+          let parsed = null;
+          try {
+            parsed = JSON.parse(dataStr);
+          } catch (e) {
+            parsed = dataStr;
+          }
+
+          let isDone = false;
+          let chunkText = '';
+          if (parsed === null) {
+            continue;
+          } else if (typeof parsed === 'string') {
+            chunkText = parsed;
+          } else if (typeof parsed === 'object') {
+            if (parsed.type === 'metadata') {
+              fullContent = parsed.data;
+            }
+            if (parsed.type.toLowerCase() === 'done') {
+              isDone = true;
+            }
+            chunkText = parsed.content ?? parsed.text ?? parsed.chunk ?? parsed.message ?? '';
+            if (!chunkText && Object.keys(parsed).length === 1) {
+              const onlyVal = parsed[Object.keys(parsed)[0]];
+              if (typeof onlyVal === 'string') chunkText = onlyVal;
+            }
+          }
+
+          if (isDone) {
+            hideTypingIndicator(bubble);
+            console.info('Stream complete (type done)');
+            continue;
+          }
+
+          if (chunkText) {
+            if (firstChunk) { 
+              hideTypingIndicator(bubble); 
+              firstChunk = false; 
+            }
+            fullContent += chunkText;
+            try {
+              const htmlContent = marked.parse(fullContent);
+              bubble.innerHTML = htmlContent;
+              // Try to detect tabular data
+              // const extracted = extractTabularData(fullContent);
+              // if (extracted) {
+              //     const grid = renderAgGrid(bubble, extracted);
+              //     if (grid) addGridControls(bubble, extracted, grid);
+              // }
+            } catch (e) {
+              bubble.textContent = fullContent;
+            }
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }
+        }
+      }
+
+      // Final flush of any remaining buffer
+      if (buffer.trim()) {
+        console.log('CHACK 7')
+        const dataLines = buffer.split(/\r?\n/).filter(l => l.trim().startsWith('data:'));
+        console.log('Final buffer data lines:', dataLines);
+        for (const line of dataLines) {
+          const dataStr = line.replace(/^data:\s*/i, '');
+          if (dataStr === '[DONE]') continue;
+          try {
+            const parsed = JSON.parse(dataStr);
+            const content = parsed.content ?? parsed.text ?? parsed.chunk ?? parsed.message ?? '';
+            if (content) {
+              fullContent += content;
+              
+              const htmlContent = marked.parse(fullContent);
+              bubble.innerHTML = htmlContent;
+            }
+            } catch (e) {
+            if (dataStr && dataStr !== '[DONE]') {
+              fullContent += dataStr;
+              bubble.innerHTML = marked.parse(fullContent);
+            }
+          }
+        }
+      }
+
+      hideTypingIndicator(bubble);
+      console.info('Message streaming completed successfully');
+      
+      // Detect and render tabular data if present
+      try {
+        // console.log('Final buffer fullContent added:', fullContent);
+        // const combinedText = normalizeBackendData(fullContent);
+        const tabularData = extractTabularData(fullContent[0].data);
+        title = fullContent[0].data_title
+        // console.log('Extracted tabular data:', tabularData);
+        // console.log('Is tabular data:', isTabularData(tabularData));
+        // console.log('Tabular data detected, rendering grid...');
+        const gridDiv = renderAgGrid(messageContent, fullContent);
+        if (gridDiv) {
+          addGridControls(gridDiv, tabularData, gridDiv, title);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+      } catch (gridErr) {
+        console.warn('Grid rendering skipped:', gridErr.message);
+      }
+      
+      // TTS if enabled
+      if (isTTSEnabled && 'speechSynthesis' in window && fullContent) {
+        const utterance = new SpeechSynthesisUtterance(fullContent);
+        speechSynthesis.speak(utterance);
+      }
+
+    } catch (err) {
+      console.error('Streaming error:', err);
+      const bubble = document.getElementById(bubbleId);
+      if (bubble) {
+        bubble.textContent = "❌ Error: " + err.message;
+      }
+    } finally {
+      sendButton.disabled = false;
+      isProcessingResponse = false;
+    }
+}
+
+// ==================== REPLACE ALL EVENT LISTENERS ====================
+
+// Remove any existing event listeners first by cloning and replacing elements
+function replaceEventListeners() {
+    // Clone and replace send button to remove old listeners
+    const oldSendButton = sendButton;
+    const newSendButton = oldSendButton.cloneNode(true);
+    oldSendButton.parentNode.replaceChild(newSendButton, oldSendButton);
+    
+    // Clone and replace chat input to remove old listeners  
+    const oldChatInput = chatInput;
+    const newChatInput = oldChatInput.cloneNode(true);
+    oldChatInput.parentNode.replaceChild(newChatInput, oldChatInput);
+    
+    // Update references
+    sendButton = newSendButton;
+    chatInput = newChatInput;
+    
+    // Add clean event listeners
+    sendButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        sendMessage(event);
+        return false;
+    });
+
+    chatInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+            sendMessage(event);
+            return false;
+        }
+    });
+
+    // Global form submission blocker
+    document.addEventListener('submit', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        return false;
+    }, true); // Use capture phase to catch early
+
+    // Additional global prevention
+    document.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter' && event.target === chatInput) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+        }
+    }, true);
+}
+
+// Initialize clean event listeners when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', replaceEventListeners);
+} else {
+    replaceEventListeners();
+}
+
+    // Expand chat toggle
+    expandChat.addEventListener('click', () => {
+      const isCurrentlyExpanded = chatPopup.classList.contains('expanded') || chatPopup.style.width === '90vw';
+      if (!isCurrentlyExpanded) {
+        // Apply styles for expanded view
+        chatPopup.style.width = '90vw';
+        chatPopup.style.height = '90vh';
+        chatPopup.style.maxWidth = '1200px';
+        chatPopup.style.maxHeight = '90vh';
+        chatPopup.classList.add('expanded');
+        document.body.classList.add('chat-expanded');
+      } else {
+        // Revert to default
+        chatPopup.style.width = '';
+        chatPopup.style.height = '';
+        chatPopup.style.maxWidth = '';
+        chatPopup.style.maxHeight = '';
+        chatPopup.classList.remove('expanded');
+        document.body.classList.remove('chat-expanded');
+      }
+    });
+
+  // Quick reply buttons
+  quickReplyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const text = button.textContent.trim();
+      chatInput.value = text;
+      sendMessage();
+    });
+  });
+
+  // Feature item click handlers for welcome screen
+  const featureTextElements = document.querySelectorAll('.welcome-features .feature-text');
+  const featureQuestionMap = {
+    'Projects of Major Ports': 'List out all projects of major ports?',
+    'Recent news about Ministry of ports and shipping': 'What are the recent news about Ministry of ports and shipping?',
+    'Overview of Major Ports': 'Give me an overview of major ports on sagarmanthan?',
+    'What can Sagarbot do?': 'What are the things that Sagarbot can do?'
+  };
+
+  featureTextElements.forEach(featureText => {
+    featureText.addEventListener('click', () => {
+      const featureLabel = featureText.textContent.trim();
+      const question = featureQuestionMap[featureLabel] || featureLabel;
+      chatInput.value = question;
+      sendMessage();
+    });
+  });
+
+  // ------------------- Backend connection configuration -------------------
+  // Set your backend URL and optional bearer token here. The UI will POST
+  // { message: string, session_id: string } to `${CHAT_ENDPOINT}` and expects JSON or plain text.
+  const BACKEND_URL = window.BACKEND_URL || 'http://localhost:8000';
+  const CHAT_ENDPOINT = BACKEND_URL + '/api/v1/chat';
+  // If your API requires a token, set window.BACKEND_TOKEN before this script runs
+  // or edit the line below with your token string.
+  const BACKEND_TOKEN = window.BACKEND_TOKEN || null;
+  // Toggle TTS via `window.IS_TTS_ENABLED = true` if you want speech
+  const isTTSEnabled = window.IS_TTS_ENABLED || false;
+  // Persistent session ID (generated once per browser session, sent with each request for backend caching/context)
+  const SESSION_ID = window.SESSION_ID || (window.SESSION_ID = (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : 'sid-' + Date.now() + '-' + Math.floor(Math.random()*10000)));
+
+  // Log startup config
+  console.log('🤖 SagarBot Frontend Initialized');
+  console.log('📍 Backend URL:', BACKEND_URL);
+  console.log('💬 Chat endpoint:', CHAT_ENDPOINT);
+  console.log('🔐 Auth token:', BACKEND_TOKEN ? 'Yes' : 'No');
+  console.log('🎙️ TTS enabled:', isTTSEnabled);
+  console.log('📌 Session ID:', SESSION_ID);
+
+  //const markcontent = "Certainly! Here’s a structured overview of the projects associated with major ports, based on the available data. --- *📊 Key Findings: Projects at Major Ports* - *Total Projects Identified:* 472 This reflects a substantial portfolio of initiatives underway or planned at major ports. - *Sample Project Details:* Here are 5 representative examples to illustrate the types of projects being undertaken (these are just samples, not the full list): 1. *Upgradation of road & drainage system outside custom bound area at J N Port* Focus: Infrastructure improvement to enhance access and drainage outside the customs area. 2. *Construction of Seawall for Gharapuri island, Panje village & Boat landing jetty at Nhava* Focus: Coastal protection and improved landing facilities for boats, supporting both safety and operational efficiency. 3. *Construction Of Business And Port Facilitation Center* Focus: Development of a dedicated center to streamline business operations and port facilitation. 4. *Up-Gradation of Arterial Road From Liquid Cargo Jetty Road Junction To North Gate Complex* Focus: Road infrastructure upgrade to support smoother cargo movement within the port complex. 5. *Operationalization of JNPA container terminal through PPP* Focus: Bringing a new container terminal into operation via a public-private partnership, aiming to boost capacity and efficiency. --- *💡 Insights & Observations* - The projects cover a wide range of activities, including infrastructure upgrades, safety enhancements, business facilitation, and capacity expansion. - There is a clear emphasis on both operational efficiency (e.g., road and terminal upgrades) and safety/environmental protection (e.g., seawall construction). - The use of public-private partnerships (PPP) indicates a strategic approach to leveraging private sector expertise and investment. --- If you need a detailed list of all 472 projects or further breakdowns (such as by port, project type, or status), please let me know!";
+
+
+
+
+  // ==================== ATTACH BUTTON & MODULE SELECTOR ====================
+  const attachButton = document.getElementById('attach-button');
+  const moduleDropdown = document.getElementById('module-dropdown');
+  const moduleDropdownContent = document.getElementById('module-dropdown-content');
+  const faqPanel = document.getElementById('faq-panel');
+  const faqPanelContent = document.getElementById('faq-panel-content');
+  const faqPanelTitle = document.getElementById('faq-panel-title');
+  const faqPanelBack = document.getElementById('faq-panel-back');
+
+  let selectedModule = null;
+
+  // Build FAQ data from MODULE_SUGGESTIONS (same as in backend)
+  const moduleData = {
+    "Projects": [
+      "Show all projects of chennai port.",
+      "How many main and sub projects are there?",
+      "What is the current project approval status?"
+    ],
+    "Capex": [
+      "What is the expected vs. actual capital expenditure this year?",
+      "How does capex expenditure correlate with the completion rates of stage-wise project milestones?",
+      "What is the current utilization percentage of allocated funds?"
+    ],
+    "Young Professionals": [
+      "What is the average time from vacancy announcement to appointment?",
+      "How many vacant and filled posts are there?",
+      "List posts where vacancy arose but not yet appointed."
+    ],
+    "Consultant Appointments": [
+      "Show all consultants where contract has been signed.",
+      "How many appointments have admin approval for NKG?",
+      "List consulting firms with pending work orders."
+    ],
+    "VIP References": [
+      "List all VIP references that have not been disposed yet.",
+      "How many references have replies furnished?",
+      "Show overdue references where the deadline has passed."
+    ],
+    "Cabinet Notes": [
+      "Show all cabinet notes that have been approved by the cabinet.",
+      "How many cabinet notes are currently on hold?",
+      "List pending cabinet notes that are not marked as completed."
+    ],
+    "Cabinet Notes (Other Ministries)": [
+      "List all cabinet notes where file has been submitted but reply not yet furnished.",
+      "How many notes are pending beyond the deadline?",
+      "Show cabinet notes that have received comments from ministries."
+    ],
+    "IMU - Students": [
+      "What is the latest seat utilization rate?",
+      "Which year had the highest placement rate?",
+      "How many students enrolled and placed this year?"
+    ],
+    "IMU - Courses": [
+      "How many courses were offered and upgraded this year?",
+      "Which year shows the most curriculum expansion?",
+      "What are the industry-relevant skills emphasized in IMU courses?"
+    ],
+    "IMU - Campuses": [
+      "What is the overall pass percentage across all records?",
+      "How many students appeared and passed in each programme?",
+      "What is the overall student pass percentage at each IMU campus?"
+    ],
+    "IMU - Facilities": [
+      "How many classrooms and labs are available?",
+      "Which year saw the biggest jump in labs?",
+      "What is the student-to-facility ratio?"
+    ],
+    "IMU - Partnerships": [
+      "List all industry partnerships.",
+      "Which year had the most academic partnerships?",
+      "How many domestic and international partnerships are active?"
+    ],
+    "IMU - Research & Innovation": [
+      "How many patents were filed till now?",
+      "How many startups have been incubated?",
+      "What is the overall research index trend?"
+    ],
+    "Audit Paras": [
+      "List all audit paras currently under clarification.",
+      "How many audit paras have been accepted by CAG?",
+      "Which wings have the most pending paras?"
+    ],
+    "CSL - Ships Repaired": [
+      "How many ships were repaired in this year?",
+      "What is the total repair value?",
+      "What are the trends in repair volume?"
+    ],
+    "CSL - Capacity Utilization": [
+      "What is the current utilization percentage?",
+      "Which year had the highest utilization?",
+      "How is the vessel tonnage progressing annually?"
+    ],
+    "CSL - Steel Fabrication": [
+      "How much steel was fabricated monthly?",
+      "What is the achievement percentage against targets?",
+      "Which months performed the best?"
+    ],
+    "CSL - Shipbuilding Orders": [
+      "How many shipbuilding orders were received this year?",
+      "What is the total order value?",
+      "What are the average order sizes?"
+    ],
+    "CSL - Vessels Built": [
+      "How many vessels are built annually?",
+      "Which year had the maximum vessel tonnage built?",
+      "What are the trends in vessel construction?"
+    ],
+    "Bills (Constitution & Legislative Process)": [
+      "List all bills that have been approved by the cabinet but not yet introduced in parliament.",
+      "How many bills have been passed?",
+      "What is the average time to pass a bill?"
+    ],
+    "Parliamentary Issues": [
+      "List all assurances raised in the Lok Sabha related to Ports.",
+      "Which parliamentary issues are currently at 'Received At Ministry' stage?",
+      "Show details of assurances raised by Smt. Kanimozhi Karunanidhi."
+    ]
+  };
+
+  // Render module tags in dropdown
+  function renderModuleTags() {
+    moduleDropdownContent.innerHTML = '';
+    Object.keys(moduleData).forEach(moduleName => {
+      const tag = document.createElement('div');
+      tag.className = 'module-tag';
+      tag.textContent = moduleName;
+      tag.addEventListener('click', (event) =>{event.preventDefault();selectModule(moduleName);});
+      moduleDropdownContent.appendChild(tag);
+    });
+  }
+
+  // Select module and show FAQs
+  function selectModule(moduleName) {
+    selectedModule = moduleName;
+    moduleDropdown.classList.remove('active');
+    faqPanel.classList.add('active');
+    faqPanelTitle.textContent = moduleName;
+
+    // Render FAQ items
+    const faqs = moduleData[moduleName] || [];
+    faqPanelContent.innerHTML = '';
+    faqs.forEach(faq => {
+      const item = document.createElement('div');
+      item.className = 'faq-item';
+      item.textContent = faq;
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        chatInput.value = faq;
+        // Close panels
+        faqPanel.classList.remove('active');
+        moduleDropdown.classList.remove('active');
+        attachButton.classList.remove('active');
+        selectedModule = null;
+        // Send message
+        sendMessage();
+      });
+      faqPanelContent.appendChild(item);
+    });
+  }
+
+  // Attach button click - toggle module dropdown
+  attachButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (faqPanel.classList.contains('active')) {
+      // If FAQ is open, close it
+      faqPanel.classList.remove('active');
+      attachButton.classList.remove('active');
+      selectedModule = null;
+    } else {
+      // Toggle module dropdown
+      moduleDropdown.classList.toggle('active');
+      attachButton.classList.toggle('active');
+      if (moduleDropdown.classList.contains('active')) {
+        renderModuleTags();
+      }
+    }
+  });
+
+  // FAQ back button - return to module list
+  faqPanelBack.addEventListener('click', (e) => {
+    e.preventDefault();
+    faqPanel.classList.remove('active');
+    moduleDropdown.classList.add('active');
+    attachButton.classList.add('active');
+  });
+
+  // Copilot close button listener
+  document.querySelector('.copilot-close-btn').addEventListener('click', () => {
+    window.setCopilotActive(false);
+    toggleChat(); // Close the chat on exiting copilot mode
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!moduleDropdown.contains(e.target) && 
+        !faqPanel.contains(e.target) && 
+        !attachButton.contains(e.target)) {
+      moduleDropdown.classList.remove('active');
+      faqPanel.classList.remove('active');
+      attachButton.classList.remove('active');
+      selectedModule = null;
+    }
+  });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && chatPopup.classList.contains('active')) {
+            toggleChat();
+        }
+    });
+
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+        // Don't close if clicking on buttons inside the chat or grid controls
+        const isClickOnButton = e.target.closest('.grid-btn') || 
+                              e.target.closest('.data-tab-btn') ||
+                              e.target.closest('.grid-minimized') ||
+                              e.target.closest('.message-grid-header');
+        if (!isClickOnButton && !chatPopup.contains(e.target) && !chatToggle.contains(e.target) && chatPopup.classList.contains('active')) {
+            toggleChat();
+        }
+    });
+})();
+    </script>
+</body>
+</html>

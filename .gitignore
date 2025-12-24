@@ -1,0 +1,14 @@
+__pycache__/
+.venv/
+venv/
+.env
+maritime-venv/
+node_modules/
+.idea/
+.vscode/
+*.log
+Outputs/
+MaritimeR&R_OP/
+Maritime Regulations & Rules/
+Maritime_gpt/
+New folder/
