@@ -51,10 +51,10 @@ def prompter():
     # if not files.endswith('.pdf'):
     #     continue
     # print("files : ",os.listdir(path))
-    print(f"|--------------------Processing file : {files}")
+    print(f"|--------------------Processing file : {files}")                
     # doc_content = read_pdf(f"./{path}/{file}")
     doc_content = read_pdf(f"./Maritime Regulations & Rules/{files}")
-    print("Doc :",doc_content)  # Debug: print first 500 characters of the document
+    # print("Doc :",doc_content)  # Debug: print first 500 characters of the document
     matches = []
     retries = 0
     max_retries = 3
