@@ -23,14 +23,15 @@ from dotenv import load_dotenv
 #     return data["message"]["content"]
 
 load_dotenv()
-path = "./Test"
+path = "./Split_PDFs"
 os.makedirs("./MaritimeR&R_OP", exist_ok=True)
 os.makedirs("./Test_CSV_Output", exist_ok=True)
+os.makedirs("./LTS_OP", exist_ok=True)
 
 def ask(prompt):
     client = Groq()
     completion = client.chat.completions.create(
-        model="groq/compound",
+        model="llama-3.3-70b-versatile",
         messages=[
             {
                 "role": "user",
@@ -63,33 +64,39 @@ def prompter():
     for file in os.listdir(path):
         print(f"|====================Processing file : {file}")                
         # doc_content = read_pdf(f"./{path}/{file}")
-        file_name_path = f"./Test/{file}"
+        file_name_path = f"./Split_PDFs/{file}"
+        # file_name_path = "./Long_term_stratigies/Annual Report 2024-25 - English.pdf"
         # doc_content = read_pdf(f"./Maritime Regulations & Rules/{files}")
         # print("Doc :",doc_content)  # Debug: print first 500 characters of the document
         matches = []
         retries = 0
-        max_retries = 3
+        max_retries = 6
+        base_file_name = os.path.splitext(file)[0]
+        print(f"Processing file: {file}, Base name: {base_file_name}")
+        print(f"Max Retries set to: {max_retries}")
         while not matches and retries < max_retries:
             if retries > 0:
                 print(f"⚠️ No Q&A pairs found for {file}. Retrying ({retries}/{max_retries})")
             
             prompt = f"""
-            **You are a helpful assistant. Carefully read the following document and generate exactly 50-70 unique
-            question-and-answer exchanges based strictly on its content. If there is low content or pages in document 
-            just generate only as many as possible like 10-15 unique exchanges**
+            **You are an maritime domain expert. Carefully read the following document and generate exactly 20 unique, behavioral, scenario based, 
+            context-specific question-and-answer exchanges based strictly on its content. If there is low content or pages in document 
+            just generate only as many as possible like 5-10 unique exchanges**
 
             **Requirements:**
+            - Do Not generate factual exchanges even if the document has mentioned them.
+            - Each Q&A pair must be behavioral, scenario based, context-specific to the document.
             - Go through the entire document thoroughly.
             - Do Not Mention the document name, location, relative path, or any metadata in the Q&A pairs.
             - The Document name will be {file.split(".")[0]} for reference only.
-            - Each question must be simple, clear, direct, and context-aware (reflecting the incident or topic in the document).
-            - Each answer must be detailed in 1-2 lines, concise but informative.
-            - Questions should include a mix of summarize, describe, and analytical styles.
-            - Do NOT repeat or rephrase exchanges; all 50-70 must be distinct.
-            - Do NOT invent information outside the document.
+            - Each question must be mentioned simple, clear, direct, and with context-aware(reflecting the incident or topic in the document) on what context the question is about , 
+                example:- What does the agreement concerning manned lightships tells about? , 
+                          What does the article 2 says in the agrrement concerning manned lightships?
+            - Each answer must be detailed in 1-2 lines, concise but informative not in factual aspect but behavioral and scenario-based.
+            - Do NOT repeat or rephrase exchanges; all 20 must be distinct. Do NOT invent information outside the document.
             - Output must strictly follow the format below, with no extra commentary or numbering.
             - Analyse the entire document clear and thoroughly before generating Q&A pairs.**
-            - Dont Miss the Main Conditions like 50-70 Q&A Pairs, Thorough Analysis, Strict Format, No Repetition, Context Awareness, Document Focus.
+            - Dont Miss the Main Conditions like 20 Q&A Pairs, Thorough Analysis, Strict Format, No Repetition, Behavioural , Scenario based, Context Awareness, Document Focus.
 
             Document:
             {file_name_path}
@@ -108,10 +115,10 @@ def prompter():
             pattern = re.compile(r"(?:\d+\.\s*)?Q\d*:\s*(.*?)\s*A\d*:\s*(.*?)(?=\n(?:\d+\.\s*)?Q\d*:|\Z)", re.DOTALL)
             matches = pattern.findall(qa_output)
             retries += 1
-
+            
         if matches:
             output_file = file.replace(" ", "_").replace(".pdf","")
-            with open(f"./Test_CSV_Output/Output_{output_file}.csv", "w", newline="", encoding="utf-8") as csvfile:
+            with open(f"./LTS_OP/Output_{output_file}.csv", "w", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(["instruction", "input", "output"])
                 for i, (q, a) in enumerate(matches, start=1):
@@ -120,8 +127,6 @@ def prompter():
         else:
             print(f"❌ Failed to generate Q&A pairs for {file} after {max_retries} retries. Skipping.")
         times += 1
-        if times == 6:
-            break
 
 if __name__ == "__main__":
     prompter()
