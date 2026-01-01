@@ -1,6 +1,8 @@
 import os
 import fitz  # PyMuPDF
 
+base_file_name = ""
+
 def split_pdf(input_path, output_dir, parts=5):
     doc = fitz.open(input_path)
     page_count = doc.page_count
@@ -12,6 +14,7 @@ def split_pdf(input_path, output_dir, parts=5):
     remainder = page_count % parts
     
     base_name = os.path.splitext(os.path.basename(input_path))[0]
+    base_file_name = base_name
     
     start_page = 0
     for i in range(parts):
@@ -33,10 +36,11 @@ def main():
     output_dir = "./Split_PDFs"
     os.makedirs(output_dir, exist_ok=True)
     
-    for file in os.listdir(input_dir):
-        if file.endswith('.pdf'):
-            input_path = os.path.join(input_dir, file)
-            split_pdf(input_path, output_dir)
+    # for file in os.listdir(input_dir):
+    #     if file.endswith('.pdf'):
+    #         input_path = os.path.join(input_dir, file)
+    #         split_pdf(input_path, output_dir)
+    split_pdf("./Long_term_stratigies/Maritime_ops.pdf", output_dir)
 
 if __name__ == "__main__":
     main()
