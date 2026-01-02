@@ -93,10 +93,10 @@ def combine_text_files(output_folder, combined_file_path):
 
 # Example usage:
 # split_paragraphs_to_chunks("MARITIME_INCIDENTS_3.docx", "output.txt", chunk_size=500)
-for file in os.listdir("./Test"):
+for file in os.listdir("./Long_term_stratigies"):
     print("file :",file)
     if file.endswith(".pdf"):
-        split_pdf_to_chunks(f"./Test/{file}", f"./TestOutput/output_{file.split('.')[0]}.txt")
+        split_pdf_to_chunks(f"./Long_term_stratigies/{file}", f"./LTS_OP/{file.split('.')[0]}.txt")
 
 # Combine all output text files into one
-combine_text_files("./TestOutput", "./TestOutput/combined_output.txt")
+combine_text_files("./LTS_OP", "./LTS_OP/LTS_OP.txt")

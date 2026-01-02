@@ -1,0 +1,2648 @@
+[
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the Agreement concerning manned lightships not on their stations?"
+      },
+      {
+        "role": "assistant",
+        "content": "It is an international agreement signed on 23 October 1930 and entered into force on 21 January 1931 to regulate lightships that are not on their designated stations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What does the agreement aim to regulate?"
+      },
+      {
+        "role": "assistant",
+        "content": "It sets rules for the manning, operation, and safety of lightships when they are away from their assigned stations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "When and where was the agreement concluded?"
+      },
+      {
+        "role": "assistant",
+        "content": "The agreement was concluded in Lisbon on 23 October 1930."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "When did the agreement become effective?"
+      },
+      {
+        "role": "assistant",
+        "content": "It entered into force on 21 January 1931."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which body acts as the depositary of the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "The Secretary‑General of the United Nations serves as the depositary."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the annexed regulations?"
+      },
+      {
+        "role": "assistant",
+        "content": "The annexed regulations provide detailed procedures for the operation and crew requirements of lightships not on their stations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Can a contracting government withdraw from the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, a contracting government may denounce the agreement in accordance with Article VII, after the prescribed notice period."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What notice period applies to denunciation?"
+      },
+      {
+        "role": "assistant",
+        "content": "Denunciation takes effect one year after the depositary receives the notice, unless a different period is specified in the agreement."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which country has formally denounced the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "The Netherlands denounced the agreement, with the denunciation taking effect on 29 December 1993."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement define a “lightship not on its station”?"
+      },
+      {
+        "role": "assistant",
+        "content": "It refers to any manned lightship that, for any reason, is operating away from the location to which it is normally assigned."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What obligations do contracting governments have regarding the annexed regulations?"
+      },
+      {
+        "role": "assistant",
+        "content": "They must incorporate the regulations into their national law and ensure compliance by the lightships under their flag."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Are colonies, protectorates, or territories covered by the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "The agreement applies to all territories of a contracting government unless a declaration is made to exclude specific colonies, protectorates, or mandates."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How can a government exclude a territory from the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "By notifying the depositary that the agreement shall cease to apply to that territory, which takes effect one year after receipt."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the main safety objective of the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "To ensure that lightships operating away from their stations maintain adequate crew, equipment, and communication standards for maritime safety."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement address crew qualifications?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, it requires that crew members meet specified training and competency standards outlined in the annexed regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What communication requirements are imposed on lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "Lightships must be equipped with radio apparatus and maintain regular contact with nearby vessels and coastal stations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement handle emergencies involving lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "It obliges contracting governments to provide assistance and rescue services for lightships in distress while off‑station."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What reporting duties are imposed on contracting governments?"
+      },
+      {
+        "role": "assistant",
+        "content": "They must report any incidents, violations, or changes in the status of their lightships to the depositary."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Are there provisions for amending the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "Amendments may be adopted by consensus of the contracting governments and deposited with the Secretary‑General."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the legal status of the agreement for non‑signatory states?"
+      },
+      {
+        "role": "assistant",
+        "content": "Non‑signatory states are not bound by its provisions unless they later accede to the agreement."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement interact with national maritime law?"
+      },
+      {
+        "role": "assistant",
+        "content": "It requires that national legislation be consistent with the annexed regulations and the overall framework of the agreement."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What role does the League of Nations play in the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "The League of Nations facilitated the drafting and adoption of the agreement before its functions were transferred to the United Nations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which article outlines the procedure for denunciation?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article VII sets out the denunciation procedure and the effective date of withdrawal."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the agreement for international navigation?"
+      },
+      {
+        "role": "assistant",
+        "content": "It promotes uniform standards for lightships, enhancing safety for all vessels navigating near off‑station lightships."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement specify the minimum crew size for lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, the annexed regulations prescribe a minimum number of officers and seamen required for safe operation."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How are disputes between contracting governments resolved?"
+      },
+      {
+        "role": "assistant",
+        "content": "Disputes are to be settled through diplomatic consultation and, if necessary, by referring to the depositary for mediation."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the effect of a denunciation on existing lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "Lightships already operating under the agreement continue to be subject to its provisions until the denunciation becomes effective."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Are there any financial obligations attached to the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "Contracting governments must bear the costs of implementing the annexed regulations and any related safety measures."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address technological changes in navigation?"
+      },
+      {
+        "role": "assistant",
+        "content": "It allows for periodic updates to the annexed regulations to incorporate new technologies and best practices."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “seven‑year” clause mentioned in the treaty text?"
+      },
+      {
+        "role": "assistant",
+        "content": "It permits a contracting government to request the agreement’s cessation for a territory after a seven‑year period from the initial notification."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which article deals with the application of the agreement to colonies and protectorates?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article VIII outlines the conditions under which the agreement applies to or is excluded from colonies, protectorates, and mandates."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the registration number of the agreement in the UN Treaty Series?"
+      },
+      {
+        "role": "assistant",
+        "content": "The agreement is registered as Treaty Series No.13 (1931)."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How many contracting governments originally signed the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "The original signatories included several maritime nations, among them Great Britain and Northern Ireland."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the primary source of the agreement’s text?"
+      },
+      {
+        "role": "assistant",
+        "content": "The official text is published in the League of Nations Treaty Series, volume 112, page 21."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement contain any provisions for training of lightship crews?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, it requires that crew training meet standards set out in the annexed regulations to ensure competence."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role of the “Secretary‑General of the United Nations” in the context of the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "The Secretary‑General receives notifications, handles depositary functions, and facilitates communication among parties."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement define “lightship station”?"
+      },
+      {
+        "role": "assistant",
+        "content": "A lightship station is the specific geographic location where a lightship is assigned to provide navigational aid."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What happens if a lightship is forced to leave its station due to weather?"
+      },
+      {
+        "role": "assistant",
+        "content": "The crew must follow the annexed emergency procedures, maintain communication, and report the deviation to the appropriate authority."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Are there any penalties for non‑compliance with the annexed regulations?"
+      },
+      {
+        "role": "assistant",
+        "content": "While the agreement does not prescribe specific penalties, non‑compliance may lead to diplomatic protest or suspension of treaty benefits."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement ensure uniformity among different nations’ lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "By mandating common standards for crew, equipment, and operational procedures in the annexed regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the date 21 January 1931 for the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "It marks the date the agreement entered into force after ratification by the required number of states."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement address the use of radio equipment on lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, it requires that all off‑station lightships be equipped with functional radio transmitters and receivers."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “notification” requirement in the treaty?"
+      },
+      {
+        "role": "assistant",
+        "content": "To inform the depositary and other parties of any changes in status, such as denunciation or territorial exclusions."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How are amendments to the annexed regulations adopted?"
+      },
+      {
+        "role": "assistant",
+        "content": "Amendments are proposed by any contracting government and become binding once accepted by all parties and deposited."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the effect of a declaration that the agreement shall not apply to a territory?"
+      },
+      {
+        "role": "assistant",
+        "content": "The agreement ceases to apply to that territory one year after the depositary receives the declaration."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement contain any provisions for the inspection of lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, it allows for inspections by competent authorities to verify compliance with the annexed regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the relationship between the agreement and national emergency powers?"
+      },
+      {
+        "role": "assistant",
+        "content": "In emergencies, a state may temporarily suspend certain provisions, but must notify the depositary and restore compliance as soon as possible."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement define “contracting government”?"
+      },
+      {
+        "role": "assistant",
+        "content": "Any sovereign state that has ratified, accepted, approved, or acceded to the agreement."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “Article IV” mentioned in the treaty series?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article IV sets the date of entry into force and the conditions required for the agreement to become operative."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Are there any specific provisions for lightships operating in war zones?"
+      },
+      {
+        "role": "assistant",
+        "content": "The agreement allows for additional safety measures in conflict areas, subject to notification to the depositary."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement handle the transfer of a lightship’s flag?"
+      },
+      {
+        "role": "assistant",
+        "content": "Any change of flag must be reported, and the new flag state assumes the obligations of the agreement for that vessel."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “League of Nations” in the treaty’s history?"
+      },
+      {
+        "role": "assistant",
+        "content": "The League of Nations acted as the original depositary and facilitated the negotiation of the agreement before the United Nations took over."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement require the publication of its regulations?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, each contracting government must make the annexed regulations publicly available within its jurisdiction."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role of “Article VI” in the treaty?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article VI outlines the procedures for the depositary to receive and circulate notifications among the parties."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address the issue of lightships that are permanently decommissioned?"
+      },
+      {
+        "role": "assistant",
+        "content": "Decommissioned lightships are no longer subject to the agreement’s obligations, provided the decommissioning is officially recorded."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the impact of the agreement on maritime insurance?"
+      },
+      {
+        "role": "assistant",
+        "content": "Uniform safety standards can affect risk assessments and premiums for vessels operating near off‑station lightships."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement contain any environmental provisions?"
+      },
+      {
+        "role": "assistant",
+        "content": "While not a primary focus, the agreement encourages practices that minimize pollution from lightship operations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How are “colonies, protectorates or territories under suzerainty” treated under the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "They are covered unless a contracting government expressly declares the agreement shall not apply to them."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “seven‑year” period mentioned in the treaty text?"
+      },
+      {
+        "role": "assistant",
+        "content": "It provides a timeframe after which a government may request the agreement’s cessation for a specific territory."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement define “off‑station” in practical terms?"
+      },
+      {
+        "role": "assistant",
+        "content": "Any situation where a lightship is operating at a location other than its designated station, whether temporarily or permanently."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What are the reporting obligations if a lightship experiences a casualty?"
+      },
+      {
+        "role": "assistant",
+        "content": "The incident must be reported promptly to the national authority and the depositary, with details of cause and remedial actions."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement allow for joint operations between multiple states’ lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, joint operations are permitted provided all participating states adhere to the annexed regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the effect of a “declaration of cessation” on a territory’s obligations?"
+      },
+      {
+        "role": "assistant",
+        "content": "The agreement’s obligations cease to apply to that territory one year after the declaration is received by the depositary."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement ensure that lightships maintain proper lighting characteristics?"
+      },
+      {
+        "role": "assistant",
+        "content": "It mandates that lightships keep their navigational lights operational and conform to prescribed color, range, and pattern standards."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “Treaty Series No. 13 (1931)” reference?"
+      },
+      {
+        "role": "assistant",
+        "content": "It identifies the official publication where the full text of the agreement and its annexes are recorded."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Are there any provisions for the replacement of crew members on off‑station lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "The annexed regulations require that any crew changes maintain the minimum competency and number of personnel required."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address the issue of jurisdiction over incidents at sea?"
+      },
+      {
+        "role": "assistant",
+        "content": "Jurisdiction rests with the flag state of the lightship, but cooperation with other states may be required under the agreement’s framework."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “depositary” function in the context of this treaty?"
+      },
+      {
+        "role": "assistant",
+        "content": "To receive, keep, and disseminate all notifications, ratifications, denunciations, and related documents among the parties."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement provide for periodic review of its effectiveness?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, contracting governments may convene meetings to assess implementation and propose updates to the annexed regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How are “technical standards” for equipment defined in the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "They are specified in the annexed regulations, which detail required specifications for lights, radios, and safety gear."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the impact of the agreement on the training curricula of maritime academies?"
+      },
+      {
+        "role": "assistant",
+        "content": "Academies in contracting states incorporate the agreement’s standards into their curricula for lightship crew training."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement handle the situation where a lightship is captured during armed conflict?"
+      },
+      {
+        "role": "assistant",
+        "content": "The capturing state must notify the depositary and ensure the vessel’s crew is treated in accordance with international humanitarian law."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role of “Article VIII” regarding territories?"
+      },
+      {
+        "role": "assistant",
+        "content": "It allows contracting governments to declare that the agreement shall not apply to specific colonies, protectorates, or mandates."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement require any specific documentation to be carried aboard lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, each lightship must carry a copy of the annexed regulations and proof of compliance with crew and equipment standards."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement influence the design of new lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "New designs must incorporate the safety and equipment standards set out in the annexed regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “Lisbon” location in the treaty’s history?"
+      },
+      {
+        "role": "assistant",
+        "content": "Lisbon was the city where the agreement was signed by the participating governments."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address the issue of “temporary relocation” of a lightship?"
+      },
+      {
+        "role": "assistant",
+        "content": "Temporary relocations must be reported, and the lightship must continue to meet all operational standards while off‑station."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What are the “annexed regulations” referred to throughout the treaty?"
+      },
+      {
+        "role": "assistant",
+        "content": "They are detailed rules attached to the agreement that specify crew, equipment, communication, and safety requirements for off‑station lightships."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement provide for any financial assistance to less‑developed contracting states?"
+      },
+      {
+        "role": "assistant",
+        "content": "The treaty does not include direct financial assistance, but parties may cooperate bilaterally to support implementation."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement interact with other maritime safety conventions?"
+      },
+      {
+        "role": "assistant",
+        "content": "It complements broader maritime safety frameworks by focusing specifically on the operation of manned lightships off their stations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “notification” requirement for changes in a lightship’s status?"
+      },
+      {
+        "role": "assistant",
+        "content": "To ensure all parties are aware of any deviations that could affect navigational safety and treaty compliance."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement define “manned” in the context of lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "“Manned” means that the lightship has a crew on board fulfilling the duties required for its operation and safety."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the effect of a “denunciation” on the treaty’s obligations for a state?"
+      },
+      {
+        "role": "assistant",
+        "content": "Upon the effective date of denunciation, the state is no longer bound by the treaty’s obligations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Are there any provisions for “joint inspections” by multiple contracting states?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, the agreement allows for joint inspections to verify compliance when lightships operate in shared waters."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address “maintenance” of lightship equipment while off‑station?"
+      },
+      {
+        "role": "assistant",
+        "content": "It requires that all essential equipment be maintained in good working order and that any deficiencies be reported promptly."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “21 January 1931” entry‑into‑force date?"
+      },
+      {
+        "role": "assistant",
+        "content": "It marks the moment when the agreement became legally binding for the states that had ratified it."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement specify any “minimum visibility” standards for lightship signals?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, the annexed regulations set minimum ranges and characteristics for the lights to ensure they are visible to passing vessels."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How are “emergency procedures” for off‑station lightships outlined?"
+      },
+      {
+        "role": "assistant",
+        "content": "The annexed regulations detail steps for distress signaling, crew safety, and coordination with rescue services."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role of “Article V” in the treaty?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article V outlines the procedures for the depositary to circulate notifications and maintain the official treaty records."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement handle “crew fatigue” concerns?"
+      },
+      {
+        "role": "assistant",
+        "content": "It mandates rest periods and crew rotation schedules to prevent fatigue and ensure safe operation."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the impact of the agreement on “maritime traffic management”?"
+      },
+      {
+        "role": "assistant",
+        "content": "By standardizing lightship operations, the agreement helps vessels navigate safely around off‑station lightships, reducing collision risk."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement require “insurance” for lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "While not mandatory, the agreement encourages contracting states to ensure their lightships are adequately insured."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address “technological upgrades” to lightship equipment?"
+      },
+      {
+        "role": "assistant",
+        "content": "It allows for updates to the annexed regulations to incorporate new technologies that improve safety and communication."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “seven‑year” clause concerning territories?"
+      },
+      {
+        "role": "assistant",
+        "content": "It provides a timeframe after which a state may request the agreement’s cessation for a specific territory, ensuring flexibility."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement define “off‑station” operations for statistical reporting?"
+      },
+      {
+        "role": "assistant",
+        "content": "Off‑station operations must be recorded and reported in accordance with the annexed regulations for statistical and safety analysis."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “League of Nations” in the treaty’s depositary history?"
+      },
+      {
+        "role": "assistant",
+        "content": "The League of Nations originally served as the depositary before the United Nations assumed that role."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement ensure “uniform crew training” across different nations?"
+      },
+      {
+        "role": "assistant",
+        "content": "By setting common training standards in the annexed regulations that all contracting states must adopt."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the effect of a “declaration of non‑application” on a protectorate?"
+      },
+      {
+        "role": "assistant",
+        "content": "The agreement’s obligations cease to apply to that protectorate one year after the declaration is received by the depositary."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Does the agreement provide for “joint rescue operations” involving multiple states?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes, it encourages cooperation among contracting governments in rescue operations for off‑station lightships in distress."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How are “communication protocols” standardized under the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "The annexed regulations prescribe specific radio frequencies, call signs, and message formats for consistent communication."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role of “Article III” in the treaty?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article III outlines the obligations of contracting governments to implement the annexed regulations domestically."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address “environmental protection” in lightship operations?"
+      },
+      {
+        "role": "assistant",
+        "content": "It encourages practices that minimize pollution, such as proper waste disposal and fuel management, though it is not a primary focus."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “depositary” receiving “notifications of cessation” for territories?"
+      },
+      {
+        "role": "assistant",
+        "content": "To formally record and disseminate the information so all parties are aware that the agreement no longer applies to those areas."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement handle “temporary suspension” of its provisions during emergencies?"
+      },
+      {
+        "role": "assistant",
+        "content": "States may temporarily suspend certain obligations but must notify the depositary and restore compliance as soon as practicable."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “Treaty Series” reference for researchers?"
+      },
+      {
+        "role": "assistant",
+        "content": "It provides the official source where the full text and annexes of the agreement can be accessed for scholarly work."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement influence “maritime navigation charts”?"
+      },
+      {
+        "role": "assistant",
+        "content": "Charts must reflect the presence and status of off‑station lightships in accordance with the agreement’s reporting requirements."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “minimum crew complement” stipulated in the annex?"
+      },
+      {
+        "role": "assistant",
+        "content": "To ensure that enough qualified personnel are aboard to operate the lightship safely while off‑station."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address “crew certification” for lightship personnel?"
+      },
+      {
+        "role": "assistant",
+        "content": "It requires that crew members hold certifications that meet the standards set out in the annexed regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the effect of “denunciation” on a state’s existing obligations under the agreement?"
+      },
+      {
+        "role": "assistant",
+        "content": "Existing obligations cease on the effective date of denunciation, after which the state is no longer bound by the treaty."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement promote “international cooperation” among maritime nations?"
+      },
+      {
+        "role": "assistant",
+        "content": "By establishing common standards and procedures, it facilitates coordinated efforts to ensure safety of navigation worldwide."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role of “Article II” in the treaty?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article II defines the scope of the agreement, specifying that it applies to manned lightships operating away from their designated stations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement handle “record‑keeping” for off‑station lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "Contracting governments must maintain logs of operations, incidents, and compliance, and make them available for inspection."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “Lisbon” signing location for the treaty's legitimacy?"
+      },
+      {
+        "role": "assistant",
+        "content": "Signing in Lisbon, a neutral venue, underscored the collaborative nature of the agreement among maritime powers."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address “maintenance of navigational aids” on lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "It requires regular inspection and upkeep of lights, fog signals, and other aids to ensure they meet performance standards."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “seven‑year” provision regarding territorial application?"
+      },
+      {
+        "role": "assistant",
+        "content": "To give states a reasonable period to assess the treaty’s impact before deciding to extend or withdraw it from specific territories."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement ensure “continuous communication” with coastal stations?"
+      },
+      {
+        "role": "assistant",
+        "content": "By mandating that off‑station lightships maintain active radio contact with the nearest coastal authority at all times."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the impact of the agreement on “maritime safety regulations” in participating states?"
+      },
+      {
+        "role": "assistant",
+        "content": "It harmonizes national regulations with international standards, enhancing overall safety for vessels near lightships."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement define “lightship” for the purposes of its provisions?"
+      },
+      {
+        "role": "assistant",
+        "content": "A lightship is a vessel equipped with navigational lights and signals, permanently or temporarily stationed to aid maritime navigation."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role of “Article VI” concerning the depositary’s duties?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article VI outlines the depositary’s responsibilities to receive, store, and circulate all treaty-related documents among the parties."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address “crew welfare” on off‑station lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "It includes provisions for adequate living conditions, medical care, and rest periods to safeguard crew well‑being."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “Treaty Series No. 13 (1931)” for legal reference?"
+      },
+      {
+        "role": "assistant",
+        "content": "It provides the authoritative citation for the agreement in international law and scholarly publications."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement handle “changes in flag state” for a lightship?"
+      },
+      {
+        "role": "assistant",
+        "content": "Any change of flag must be reported to the depositary, and the new flag state assumes all treaty obligations for that vessel."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of the “annexed regulations” in ensuring compliance?"
+      },
+      {
+        "role": "assistant",
+        "content": "They provide detailed, technical standards that contracting governments must implement and enforce for off‑station lightships."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement facilitate “information exchange” among maritime authorities?"
+      },
+      {
+        "role": "assistant",
+        "content": "Through mandatory reporting and the depositary’s role in disseminating notifications, parties stay informed of relevant developments."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the effect of a “declaration of cessation” on a colony’s obligations?"
+      },
+      {
+        "role": "assistant",
+        "content": "The agreement’s obligations cease to apply to that colony one year after the declaration is received by the depositary."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement address “emergency rescue coordination” for lightships?"
+      },
+      {
+        "role": "assistant",
+        "content": "It requires that lightships in distress follow prescribed distress signaling procedures and coordinate with nearby rescue services."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of the “seven‑year” clause for territorial applicability?"
+      },
+      {
+        "role": "assistant",
+        "content": "It offers a structured timeline for states to evaluate and decide on the treaty’s continuation or withdrawal for specific territories."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the agreement ensure “standardized lighting characteristics” across different nations?"
+      },
+      {
+        "role": "assistant",
+        "content": "By specifying minimum ranges, colors, and flashing patterns in the annexed regulations, all lightships must conform to the same standards."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role of “Article I” in establishing the treaty’s purpose?"
+      },
+      {
+        "role": "assistant",
+        "content": "Article I states the objective of regulating manned lightships that operate away from their assigned stations for safety of navigation."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What primary function does the Assistant Director of Engineering serve within the department?"
+      },
+      {
+        "role": "assistant",
+        "content": "They assist in planning, organizing, managing, and overseeing multiple engineering functions, work groups, and service areas."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which degree is typically required for the Assistant Director of Engineering position?"
+      },
+      {
+        "role": "assistant",
+        "content": "A Bachelor’s degree in Civil Engineering or a closely related field."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Is a Master’s degree required or optional for this role?"
+      },
+      {
+        "role": "assistant",
+        "content": "A Master’s degree in a related field is desirable but not required."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How many years of professional civil engineering experience are generally needed?"
+      },
+      {
+        "role": "assistant",
+        "content": "At least seven years of increasingly responsible civil engineering experience."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What supervisory experience is expected for candidates?"
+      },
+      {
+        "role": "assistant",
+        "content": "Five years of professional supervisory or management responsibility."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What key responsibility involves staff development?"
+      },
+      {
+        "role": "assistant",
+        "content": "The Assistant Director monitors staff performance, provides coaching, and conducts performance appraisals."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which activity ensures projects are delivered efficiently?"
+      },
+      {
+        "role": "assistant",
+        "content": "Overseeing project design and construction phases while monitoring schedules and budgets."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the role contribute to grant management?"
+      },
+      {
+        "role": "assistant",
+        "content": "By monitoring grant opportunities and ensuring compliance with grant requirements."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is one of the essential functions related to project planning?"
+      },
+      {
+        "role": "assistant",
+        "content": "Developing project plans and identifying critical path tasks."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director support the capital investment plan?"
+      },
+      {
+        "role": "assistant",
+        "content": "By creating a list of potential infrastructure improvement projects for inclusion."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What type of inspections does the role perform?"
+      },
+      {
+        "role": "assistant",
+        "content": "Inspections of completed work and quality of construction materials."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which skill is crucial for resolving issues with consultants and contractors?"
+      },
+      {
+        "role": "assistant",
+        "content": "Strong problem‑solving and negotiation abilities."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What does the Assistant Director do during regular project progress meetings?"
+      },
+      {
+        "role": "assistant",
+        "content": "Attends, reviews status, and coordinates actions to keep the project on track."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How is regulatory compliance ensured?"
+      },
+      {
+        "role": "assistant",
+        "content": "By confirming all projects meet applicable codes, standards, and environmental regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role’s involvement with change orders?"
+      },
+      {
+        "role": "assistant",
+        "content": "Evaluating, reviewing, and processing change orders for scope adjustments."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which function relates to customer service?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ensuring staff provide excellent service and addressing public inquiries promptly."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director interact with other municipal departments?"
+      },
+      {
+        "role": "assistant",
+        "content": "Collaborates to align engineering projects with broader community and departmental goals."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What field work does the position include?"
+      },
+      {
+        "role": "assistant",
+        "content": "Conducting site inspections and overseeing field activities for engineering projects."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which budgeting responsibility does the role hold?"
+      },
+      {
+        "role": "assistant",
+        "content": "Managing project budgets and ensuring expenditures stay within approved limits."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What analytical task is part of the job?"
+      },
+      {
+        "role": "assistant",
+        "content": "Conducting assessments to determine project requirements and feasibility."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director support staff scheduling?"
+      },
+      {
+        "role": "assistant",
+        "content": "Coordinating daily work activities and allocating resources effectively."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What type of reports might the Assistant Director prepare?"
+      },
+      {
+        "role": "assistant",
+        "content": "Progress reports, budget summaries, and compliance documentation."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which communication skill is essential when presenting to stakeholders?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ability to convey technical information clearly and respond to public inquiries."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What role does the Assistant Director play in employee concerns?"
+      },
+      {
+        "role": "assistant",
+        "content": "Processes concerns, provides counseling, and addresses disciplinary matters."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the position contribute to the department’s strategic goals?"
+      },
+      {
+        "role": "assistant",
+        "content": "By assisting in planning and managing initiatives that meet the department’s objectives."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is a key responsibility during the construction phase?"
+      },
+      {
+        "role": "assistant",
+        "content": "Monitoring adherence to project schedules and inspecting work quality."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director ensure project timelines are met?"
+      },
+      {
+        "role": "assistant",
+        "content": "By tracking critical path tasks and adjusting resources as needed."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What type of technical expertise is required?"
+      },
+      {
+        "role": "assistant",
+        "content": "Knowledge of civil engineering principles, local, state, and federal regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the role support environmental analysis?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ensuring projects incorporate environmental considerations and comply with regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of developing a list of infrastructure projects?"
+      },
+      {
+        "role": "assistant",
+        "content": "To prioritize improvements and guide capital investment decisions."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which function involves liaison duties?"
+      },
+      {
+        "role": "assistant",
+        "content": "Maintaining communication with local entities, state and federal agencies, and the public."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director handle performance monitoring?"
+      },
+      {
+        "role": "assistant",
+        "content": "By regularly reviewing work progress and providing feedback to staff."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of overseeing right‑of‑way activities?"
+      },
+      {
+        "role": "assistant",
+        "content": "To manage land acquisition and usage for engineering projects."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the role contribute to project documentation?"
+      },
+      {
+        "role": "assistant",
+        "content": "By preparing and reviewing contracts, change orders, and technical reports."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the importance of field decisions in this position?"
+      },
+      {
+        "role": "assistant",
+        "content": "To address on‑site issues promptly and keep projects moving forward."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Which activity ensures projects align with community needs?"
+      },
+      {
+        "role": "assistant",
+        "content": "Engaging with stakeholders and incorporating feedback into project plans."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director assist with budgeting for new projects?"
+      },
+      {
+        "role": "assistant",
+        "content": "By estimating costs, preparing budget proposals, and tracking expenditures."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is a typical outcome of the Assistant Director’s oversight of design phases?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ensuring designs meet technical standards and project requirements."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the role support the engineering director?"
+      },
+      {
+        "role": "assistant",
+        "content": "By handling delegated responsibilities and providing status updates on projects."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What type of leadership is expected from the Assistant Director?"
+      },
+      {
+        "role": "assistant",
+        "content": "Directing, supervising, and evaluating assigned staff effectively."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director contribute to risk management?"
+      },
+      {
+        "role": "assistant",
+        "content": "Identifying potential project risks and implementing mitigation strategies."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role’s involvement with procurement?"
+      },
+      {
+        "role": "assistant",
+        "content": "Assisting in the selection of consultants and contractors and reviewing bids."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director ensure quality control?"
+      },
+      {
+        "role": "assistant",
+        "content": "By inspecting work, reviewing materials, and enforcing standards."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of attending public meetings?"
+      },
+      {
+        "role": "assistant",
+        "content": "To inform the community about projects and gather input."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director handle multiple concurrent projects?"
+      },
+      {
+        "role": "assistant",
+        "content": "Prioritizing tasks, delegating responsibilities, and monitoring progress across all projects."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the significance of maintaining up‑to‑date technical knowledge?"
+      },
+      {
+        "role": "assistant",
+        "content": "To ensure compliance with evolving regulations and industry best practices."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the role support staff training and development?"
+      },
+      {
+        "role": "assistant",
+        "content": "Identifying training needs and facilitating professional growth opportunities."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the function of developing project schedules?"
+      },
+      {
+        "role": "assistant",
+        "content": "To outline timelines, milestones, and resource allocation for successful completion."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director address unexpected project issues?"
+      },
+      {
+        "role": "assistant",
+        "content": "By analyzing the problem, coordinating solutions, and adjusting plans as needed."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What role does the Assistant Director play in contract administration?"
+      },
+      {
+        "role": "assistant",
+        "content": "Reviewing, approving, and managing contracts throughout the project lifecycle."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director ensure transparency in project execution?"
+      },
+      {
+        "role": "assistant",
+        "content": "Maintaining clear documentation and communicating status to stakeholders."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the importance of monitoring grant compliance?"
+      },
+      {
+        "role": "assistant",
+        "content": "To ensure funded projects meet the specific requirements and reporting obligations of the grant."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director contribute to the department’s customer service standards?"
+      },
+      {
+        "role": "assistant",
+        "content": "By setting expectations for staff interactions and addressing public concerns promptly."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the purpose of conducting field inspections?"
+      },
+      {
+        "role": "assistant",
+        "content": "To verify that construction work aligns with design specifications and safety standards."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director support the engineering director’s strategic initiatives?"
+      },
+      {
+        "role": "assistant",
+        "content": "By implementing plans, tracking progress, and reporting outcomes."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is a key factor in successful stakeholder negotiations?"
+      },
+      {
+        "role": "assistant",
+        "content": "Clear communication, understanding of project goals, and fair compromise."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director handle performance appraisal documentation?"
+      },
+      {
+        "role": "assistant",
+        "content": "Completing evaluations, providing feedback, and setting development goals for staff."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the role's involvement in environmental permitting?"
+      },
+      {
+        "role": "assistant",
+        "content": "Coordinating permit applications and ensuring compliance with environmental regulations."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "How does the Assistant Director ensure projects stay within scope?"
+      },
+      {
+        "role": "assistant",
+        "content": "Monitoring change orders and verifying that work aligns with approved plans."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  },
+  {
+    "conversation": [
+      {
+        "role": "user",
+        "content": "What is the benefit of maintaining a capital investment plan list?"
+      },
+      {
+        "role": "assistant",
+        "content": "It provides a roadmap for future infrastructure improvements and budgeting."
+      }
+    ],
+    "source": "custom-dataset",
+    "score": 10
+  }
+]

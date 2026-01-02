@@ -95,7 +95,7 @@ def main_extractor(file):
         - The Document name will be {file.split(".")[0]} for reference only.
         - Each question must be mentioned simple, clear, direct, and with context-aware(reflecting the incident or topic in the document) on what context the question is about , 
             example:- What does the agreement concerning manned lightships tells about? , 
-                        What does the article 2 says in the agrrement concerning manned lightships?
+                      What does the article 2 says in the agrrement concerning manned lightships?
         - Each answer must be detailed in 1-2 lines, concise but informative not in factual aspect but behavioral and scenario-based.
         - Do NOT repeat or rephrase exchanges; all 20 must be distinct. Do NOT invent information outside the document.
         - Output must strictly follow the format below, with no extra commentary or numbering.
