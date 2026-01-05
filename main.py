@@ -73,7 +73,7 @@ def split_pdf(input_path, output_dir, parts=5):
 def main_extractor(file):
     print(f"|====================Processing file : {file}")                
     # doc_content = read_pdf(f"./{path}/{file}")
-    file_name_path = f"./Split_PDFs/{file.split('.')[0]}/{file}"
+    file_name_path = f"./Maritime Regulations & Rules/{file.split('.')[0]}/{file}"
     matches = []
     retries = 0
     max_retries = 6
@@ -83,31 +83,30 @@ def main_extractor(file):
             print(f"⚠️ No Q&A pairs found for {file}. Retrying ({retries}/{max_retries})")
         
         prompt = f"""
-        **You are an maritime domain expert. Carefully read the following document and generate exactly 20 unique, behavioral, scenario based, 
-        context-specific question-and-answer exchanges based strictly on its content. If there is low content or pages in document 
-        just generate only as many as possible like 5-10 unique exchanges**
+        **You are a maritime domain expert specializing in regulatory compliance. Carefully read the following document and generate exactly 20 unique, behavioral, scenario-based, context-specific question-and-answer exchanges based strictly on its English content. If there is low content or pages in the document, generate only as many as possible, like 5-10 unique exchanges.**
 
         **Requirements:**
-        - Do Not generate factual exchanges even if the document has mentioned them.
-        - Each Q&A pair must be behavioral, scenario based, context-specific to the document.
-        - Go through the entire document thoroughly.
-        - Do Not Mention the document name, location, relative path, or any metadata in the Q&A pairs.
+        - Do NOT generate factual exchanges; focus solely on compliance audit scenarios.
+        - Each exchange must be behavioral, scenario-based, and context-specific to the document's regulations on pollution prevention, vessel equipment, port facilities, and compliance actions.
+        - Go through the entire English content of the document thoroughly.
+        - Do NOT mention the document name, location, relative path, or any metadata in the exchanges.
         - The Document name will be {file.split(".")[0]} for reference only.
-        - Each question must be mentioned simple, clear, direct, and with context-aware(reflecting the incident or topic in the document) on what context the question is about , 
-            example:- What does the agreement concerning manned lightships tells about? , 
-                      What does the article 2 says in the agrrement concerning manned lightships?
-        - Each answer must be detailed in 1-2 lines, concise but informative not in factual aspect but behavioral and scenario-based.
-        - Do NOT repeat or rephrase exchanges; all 20 must be distinct. Do NOT invent information outside the document.
+        - Each problem (question) must be a compliance scenario: simple, clear, direct, and context-aware (e.g., 'For a 1200 GT inland vessel without oily mixture treatment, what compliance action should the surveyor take?').
+        - For each exchange, provide a step-by-step chain of thought reasoning in a <think> tag, leading to a **Final Answer** with the compliance recommendation boxed in \boxed{{}}.
+        - The final answer inside the box must be concise, 1-2 lines, informative, behavioral, and scenario-based (e.g., 'Issue a notice under Rule 9(ii) and suspend operations until remedied.').
+        - Do NOT repeat or rephrase exchanges; all must be distinct. Do NOT invent information outside the document.
         - Output must strictly follow the format below, with no extra commentary or numbering.
-        - Analyse the entire document clear and thoroughly before generating Q&A pairs.**
-        - Dont Miss the Main Conditions like 20 Q&A Pairs, Thorough Analysis, Strict Format, No Repetition, Behavioural , Scenario based, Context Awareness, Document Focus.
-
+        - Analyze the entire English content clearly and thoroughly before generating exchanges.**
+        - Don't miss the main conditions like 20 Exchanges, Thorough Analysis, Strict Format, No Repetition, Behavioral, Scenario-based, Context Awareness, Document Focus.
+        - Do not extract or use other language information; just use English contents only.
+       
         Document:
         {file_name_path}
 
         **Output format (strictly follow):**
-        Q: ...
-        A: ...
+        Problem: [The scenario-based question here]
+        Generated Solution: <think>[Step-by-step chain of thought reasoning leading to the answer]  </think> **Final Answer** \boxed{{[The final compliance recommendation in 1-2 lines]}}
+        Expected Output: [The final compliance recommendation in 1-2 lines]
         """
 
         qa_output = ask(prompt)
@@ -115,8 +114,8 @@ def main_extractor(file):
         # Debug: print raw output
         # print("RAW OUTPUT:\n", qa_output)
 
-        # Regex that tolerates numbering before and after Q/A:
-        pattern = re.compile(r"(?:\d+\.\s*)?Q\d*:\s*(.*?)\s*A\d*:\s*(.*?)(?=\n(?:\d+\.\s*)?Q\d*:|\Z)", re.DOTALL)
+        # Regex to match the new format
+        pattern = re.compile(r"Problem:\s*(.*?)\s*Generated Solution:\s*(.*?)\s*Expected Output:\s*(.*?)(?=\nProblem:|\Z)", re.DOTALL)
         matches = pattern.findall(qa_output)
         retries += 1
         
@@ -138,20 +137,20 @@ def prompter(path):
         matches = main_extractor(file)
         base_to_matches[base].extend(matches)
     
-    for base, all_matches in base_to_matches.items():
-        if all_matches:
-            with open(f"./LTS_OP/{base}.csv", "w", newline="", encoding="utf-8") as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow(["instruction", "input", "output"])
-                for q, a in all_matches:
-                    writer.writerow([q.strip(), "", a.strip()])
-            print(f"✅ Q&A pairs for {base} saved to {base}.csv")
-        else:
-            print(f"❌ No Q&A pairs for {base}.")
+        for base, all_matches in base_to_matches.items():
+            if all_matches:
+                with open(f"./LTS_OP/new/{base}.csv", "w", newline="", encoding="utf-8") as csvfile:
+                    writer = csv.writer(csvfile)
+                    writer.writerow(["expected_output", "problem", "generated_solution"])
+                    for prob, sol, exp in all_matches:
+                        writer.writerow([exp.strip(), prob.strip(), sol.strip()])
+                print(f"✅ Q&A pairs for {base} saved to {base}.csv")
+            else:
+                print(f"❌ No Q&A pairs for {base}.")
 
 if __name__ == "__main__":
     # main_extractor("Maritime_ops.pdf")
-    input_dir = "./Long_term_stratigies"
+    input_dir = "./Maritime Regulations & Rules"
     for file in os.listdir(input_dir):
         output_dir = f"./Split_PDFs/{file.split('.')[0]}"
         os.makedirs(output_dir, exist_ok=True)
