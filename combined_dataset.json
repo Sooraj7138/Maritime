@@ -7,7 +7,7 @@
       },
       {
         "role": "assistant",
-        "content": "It is an international agreement signed on 23 October 1930 and entered into force on 21 January 1931 to regulate lightships that are not on their designated stations."
+        "content": "It is an international agreement signed on 23 October 1930 and entered into force on 21 January 1931 to regulate lightships that are not on their designated stations."
       }
     ],
     "source": "custom-dataset",
@@ -35,7 +35,7 @@
       },
       {
         "role": "assistant",
-        "content": "The agreement was concluded in Lisbon on 23 October 1930."
+        "content": "The agreement was concluded in Lisbon on 23 October 1930."
       }
     ],
     "source": "custom-dataset",
@@ -49,7 +49,7 @@
       },
       {
         "role": "assistant",
-        "content": "It entered into force on 21 January 1931."
+        "content": "It entered into force on 21 January 1931."
       }
     ],
     "source": "custom-dataset",
@@ -63,7 +63,7 @@
       },
       {
         "role": "assistant",
-        "content": "The Secretary‑General of the United Nations serves as the depositary."
+        "content": "The Secretary-General of the United Nations serves as the depositary."
       }
     ],
     "source": "custom-dataset",
@@ -231,7 +231,7 @@
       },
       {
         "role": "assistant",
-        "content": "It obliges contracting governments to provide assistance and rescue services for lightships in distress while off‑station."
+        "content": "It obliges contracting governments to provide assistance and rescue services for lightships in distress while off-station."
       }
     ],
     "source": "custom-dataset",
@@ -259,7 +259,7 @@
       },
       {
         "role": "assistant",
-        "content": "Amendments may be adopted by consensus of the contracting governments and deposited with the Secretary‑General."
+        "content": "Amendments may be adopted by consensus of the contracting governments and deposited with the Secretary-General."
       }
     ],
     "source": "custom-dataset",
@@ -269,11 +269,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the legal status of the agreement for non‑signatory states?"
+        "content": "What is the legal status of the agreement for non-signatory states?"
       },
       {
         "role": "assistant",
-        "content": "Non‑signatory states are not bound by its provisions unless they later accede to the agreement."
+        "content": "Non-signatory states are not bound by its provisions unless they later accede to the agreement."
       }
     ],
     "source": "custom-dataset",
@@ -329,7 +329,7 @@
       },
       {
         "role": "assistant",
-        "content": "It promotes uniform standards for lightships, enhancing safety for all vessels navigating near off‑station lightships."
+        "content": "It promotes uniform standards for lightships, enhancing safety for all vessels navigating near off-station lightships."
       }
     ],
     "source": "custom-dataset",
@@ -409,11 +409,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the purpose of the “seven‑year” clause mentioned in the treaty text?"
+        "content": "What is the purpose of the “seven-year” clause mentioned in the treaty text?"
       },
       {
         "role": "assistant",
-        "content": "It permits a contracting government to request the agreement’s cessation for a territory after a seven‑year period from the initial notification."
+        "content": "It permits a contracting government to request the agreement's cessation for a territory after a seven-year period from the initial notification."
       }
     ],
     "source": "custom-dataset",
@@ -465,11 +465,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the primary source of the agreement’s text?"
+        "content": "What is the primary source of the agreement's text?"
       },
       {
         "role": "assistant",
-        "content": "The official text is published in the League of Nations Treaty Series, volume 112, page 21."
+        "content": "The official text is published in the League of Nations Treaty Series, volume 112, page 21."
       }
     ],
     "source": "custom-dataset",
@@ -493,11 +493,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role of the “Secretary‑General of the United Nations” in the context of the agreement?"
+        "content": "What is the role of the “Secretary-General of the United Nations” in the context of the agreement?"
       },
       {
         "role": "assistant",
-        "content": "The Secretary‑General receives notifications, handles depositary functions, and facilitates communication among parties."
+        "content": "The Secretary-General receives notifications, handles depositary functions, and facilitates communication among parties."
       }
     ],
     "source": "custom-dataset",
@@ -535,11 +535,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Are there any penalties for non‑compliance with the annexed regulations?"
+        "content": "Are there any penalties for non-compliance with the annexed regulations?"
       },
       {
         "role": "assistant",
-        "content": "While the agreement does not prescribe specific penalties, non‑compliance may lead to diplomatic protest or suspension of treaty benefits."
+        "content": "While the agreement does not prescribe specific penalties, non-compliance may lead to diplomatic protest or suspension of treaty benefits."
       }
     ],
     "source": "custom-dataset",
@@ -549,7 +549,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the agreement ensure uniformity among different nations’ lightships?"
+        "content": "How does the agreement ensure uniformity among different nations' lightships?"
       },
       {
         "role": "assistant",
@@ -563,7 +563,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of the date 21 January 1931 for the agreement?"
+        "content": "What is the significance of the date 21 January 1931 for the agreement?"
       },
       {
         "role": "assistant",
@@ -581,7 +581,7 @@
       },
       {
         "role": "assistant",
-        "content": "Yes, it requires that all off‑station lightships be equipped with functional radio transmitters and receivers."
+        "content": "Yes, it requires that all off-station lightships be equipped with functional radio transmitters and receivers."
       }
     ],
     "source": "custom-dataset",
@@ -675,11 +675,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the purpose of the “Article IV” mentioned in the treaty series?"
+        "content": "What is the purpose of the “Article IV” mentioned in the treaty series?"
       },
       {
         "role": "assistant",
-        "content": "Article IV sets the date of entry into force and the conditions required for the agreement to become operative."
+        "content": "Article IV sets the date of entry into force and the conditions required for the agreement to become operative."
       }
     ],
     "source": "custom-dataset",
@@ -703,7 +703,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the agreement handle the transfer of a lightship’s flag?"
+        "content": "How does the agreement handle the transfer of a lightship's flag?"
       },
       {
         "role": "assistant",
@@ -717,7 +717,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of the “League of Nations” in the treaty’s history?"
+        "content": "What is the significance of the “League of Nations” in the treaty's history?"
       },
       {
         "role": "assistant",
@@ -745,11 +745,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role of “Article VI” in the treaty?"
+        "content": "What is the role of “Article VI” in the treaty?"
       },
       {
         "role": "assistant",
-        "content": "Article VI outlines the procedures for the depositary to receive and circulate notifications among the parties."
+        "content": "Article VI outlines the procedures for the depositary to receive and circulate notifications among the parties."
       }
     ],
     "source": "custom-dataset",
@@ -763,7 +763,7 @@
       },
       {
         "role": "assistant",
-        "content": "Decommissioned lightships are no longer subject to the agreement’s obligations, provided the decommissioning is officially recorded."
+        "content": "Decommissioned lightships are no longer subject to the agreement's obligations, provided the decommissioning is officially recorded."
       }
     ],
     "source": "custom-dataset",
@@ -777,7 +777,7 @@
       },
       {
         "role": "assistant",
-        "content": "Uniform safety standards can affect risk assessments and premiums for vessels operating near off‑station lightships."
+        "content": "Uniform safety standards can affect risk assessments and premiums for vessels operating near off-station lightships."
       }
     ],
     "source": "custom-dataset",
@@ -815,11 +815,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the purpose of the “seven‑year” period mentioned in the treaty text?"
+        "content": "What is the purpose of the “seven-year” period mentioned in the treaty text?"
       },
       {
         "role": "assistant",
-        "content": "It provides a timeframe after which a government may request the agreement’s cessation for a specific territory."
+        "content": "It provides a timeframe after which a government may request the agreement's cessation for a specific territory."
       }
     ],
     "source": "custom-dataset",
@@ -829,7 +829,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the agreement define “off‑station” in practical terms?"
+        "content": "How does the agreement define “off-station” in practical terms?"
       },
       {
         "role": "assistant",
@@ -857,7 +857,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Does the agreement allow for joint operations between multiple states’ lightships?"
+        "content": "Does the agreement allow for joint operations between multiple states' lightships?"
       },
       {
         "role": "assistant",
@@ -871,11 +871,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the effect of a “declaration of cessation” on a territory’s obligations?"
+        "content": "What is the effect of a “declaration of cessation” on a territory's obligations?"
       },
       {
         "role": "assistant",
-        "content": "The agreement’s obligations cease to apply to that territory one year after the declaration is received by the depositary."
+        "content": "The agreement's obligations cease to apply to that territory one year after the declaration is received by the depositary."
       }
     ],
     "source": "custom-dataset",
@@ -899,7 +899,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of the “Treaty Series No. 13 (1931)” reference?"
+        "content": "What is the significance of the “Treaty Series No. 13 (1931)” reference?"
       },
       {
         "role": "assistant",
@@ -913,7 +913,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Are there any provisions for the replacement of crew members on off‑station lightships?"
+        "content": "Are there any provisions for the replacement of crew members on off-station lightships?"
       },
       {
         "role": "assistant",
@@ -931,7 +931,7 @@
       },
       {
         "role": "assistant",
-        "content": "Jurisdiction rests with the flag state of the lightship, but cooperation with other states may be required under the agreement’s framework."
+        "content": "Jurisdiction rests with the flag state of the lightship, but cooperation with other states may be required under the agreement's framework."
       }
     ],
     "source": "custom-dataset",
@@ -987,7 +987,7 @@
       },
       {
         "role": "assistant",
-        "content": "Academies in contracting states incorporate the agreement’s standards into their curricula for lightship crew training."
+        "content": "Academies in contracting states incorporate the agreement's standards into their curricula for lightship crew training."
       }
     ],
     "source": "custom-dataset",
@@ -1001,7 +1001,7 @@
       },
       {
         "role": "assistant",
-        "content": "The capturing state must notify the depositary and ensure the vessel’s crew is treated in accordance with international humanitarian law."
+        "content": "The capturing state must notify the depositary and ensure the vessel's crew is treated in accordance with international humanitarian law."
       }
     ],
     "source": "custom-dataset",
@@ -1011,7 +1011,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role of “Article VIII” regarding territories?"
+        "content": "What is the role of “Article VIII” regarding territories?"
       },
       {
         "role": "assistant",
@@ -1053,7 +1053,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of the “Lisbon” location in the treaty’s history?"
+        "content": "What is the significance of the “Lisbon” location in the treaty's history?"
       },
       {
         "role": "assistant",
@@ -1071,7 +1071,7 @@
       },
       {
         "role": "assistant",
-        "content": "Temporary relocations must be reported, and the lightship must continue to meet all operational standards while off‑station."
+        "content": "Temporary relocations must be reported, and the lightship must continue to meet all operational standards while off-station."
       }
     ],
     "source": "custom-dataset",
@@ -1085,7 +1085,7 @@
       },
       {
         "role": "assistant",
-        "content": "They are detailed rules attached to the agreement that specify crew, equipment, communication, and safety requirements for off‑station lightships."
+        "content": "They are detailed rules attached to the agreement that specify crew, equipment, communication, and safety requirements for off-station lightships."
       }
     ],
     "source": "custom-dataset",
@@ -1095,7 +1095,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Does the agreement provide for any financial assistance to less‑developed contracting states?"
+        "content": "Does the agreement provide for any financial assistance to less-developed contracting states?"
       },
       {
         "role": "assistant",
@@ -1123,7 +1123,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the purpose of the “notification” requirement for changes in a lightship’s status?"
+        "content": "What is the purpose of the “notification” requirement for changes in a lightship's status?"
       },
       {
         "role": "assistant",
@@ -1151,11 +1151,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the effect of a “denunciation” on the treaty’s obligations for a state?"
+        "content": "What is the effect of a “denunciation” on the treaty's obligations for a state?"
       },
       {
         "role": "assistant",
-        "content": "Upon the effective date of denunciation, the state is no longer bound by the treaty’s obligations."
+        "content": "Upon the effective date of denunciation, the state is no longer bound by the treaty's obligations."
       }
     ],
     "source": "custom-dataset",
@@ -1179,7 +1179,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the agreement address “maintenance” of lightship equipment while off‑station?"
+        "content": "How does the agreement address “maintenance” of lightship equipment while off-station?"
       },
       {
         "role": "assistant",
@@ -1193,7 +1193,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of the “21 January 1931” entry‑into‑force date?"
+        "content": "What is the significance of the “21 January 1931” entry-into-force date?"
       },
       {
         "role": "assistant",
@@ -1221,7 +1221,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How are “emergency procedures” for off‑station lightships outlined?"
+        "content": "How are “emergency procedures” for off-station lightships outlined?"
       },
       {
         "role": "assistant",
@@ -1235,11 +1235,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role of “Article V” in the treaty?"
+        "content": "What is the role of “Article V” in the treaty?"
       },
       {
         "role": "assistant",
-        "content": "Article V outlines the procedures for the depositary to circulate notifications and maintain the official treaty records."
+        "content": "Article V outlines the procedures for the depositary to circulate notifications and maintain the official treaty records."
       }
     ],
     "source": "custom-dataset",
@@ -1267,7 +1267,7 @@
       },
       {
         "role": "assistant",
-        "content": "By standardizing lightship operations, the agreement helps vessels navigate safely around off‑station lightships, reducing collision risk."
+        "content": "By standardizing lightship operations, the agreement helps vessels navigate safely around off-station lightships, reducing collision risk."
       }
     ],
     "source": "custom-dataset",
@@ -1305,11 +1305,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the purpose of the “seven‑year” clause concerning territories?"
+        "content": "What is the purpose of the “seven-year” clause concerning territories?"
       },
       {
         "role": "assistant",
-        "content": "It provides a timeframe after which a state may request the agreement’s cessation for a specific territory, ensuring flexibility."
+        "content": "It provides a timeframe after which a state may request the agreement's cessation for a specific territory, ensuring flexibility."
       }
     ],
     "source": "custom-dataset",
@@ -1319,11 +1319,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the agreement define “off‑station” operations for statistical reporting?"
+        "content": "How does the agreement define “off-station” operations for statistical reporting?"
       },
       {
         "role": "assistant",
-        "content": "Off‑station operations must be recorded and reported in accordance with the annexed regulations for statistical and safety analysis."
+        "content": "Off-station operations must be recorded and reported in accordance with the annexed regulations for statistical and safety analysis."
       }
     ],
     "source": "custom-dataset",
@@ -1333,7 +1333,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of the “League of Nations” in the treaty’s depositary history?"
+        "content": "What is the significance of the “League of Nations” in the treaty's depositary history?"
       },
       {
         "role": "assistant",
@@ -1361,11 +1361,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the effect of a “declaration of non‑application” on a protectorate?"
+        "content": "What is the effect of a “declaration of non-application” on a protectorate?"
       },
       {
         "role": "assistant",
-        "content": "The agreement’s obligations cease to apply to that protectorate one year after the declaration is received by the depositary."
+        "content": "The agreement's obligations cease to apply to that protectorate one year after the declaration is received by the depositary."
       }
     ],
     "source": "custom-dataset",
@@ -1379,7 +1379,7 @@
       },
       {
         "role": "assistant",
-        "content": "Yes, it encourages cooperation among contracting governments in rescue operations for off‑station lightships in distress."
+        "content": "Yes, it encourages cooperation among contracting governments in rescue operations for off-station lightships in distress."
       }
     ],
     "source": "custom-dataset",
@@ -1403,11 +1403,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role of “Article III” in the treaty?"
+        "content": "What is the role of “Article III” in the treaty?"
       },
       {
         "role": "assistant",
-        "content": "Article III outlines the obligations of contracting governments to implement the annexed regulations domestically."
+        "content": "Article III outlines the obligations of contracting governments to implement the annexed regulations domestically."
       }
     ],
     "source": "custom-dataset",
@@ -1477,7 +1477,7 @@
       },
       {
         "role": "assistant",
-        "content": "Charts must reflect the presence and status of off‑station lightships in accordance with the agreement’s reporting requirements."
+        "content": "Charts must reflect the presence and status of off-station lightships in accordance with the agreement's reporting requirements."
       }
     ],
     "source": "custom-dataset",
@@ -1491,7 +1491,7 @@
       },
       {
         "role": "assistant",
-        "content": "To ensure that enough qualified personnel are aboard to operate the lightship safely while off‑station."
+        "content": "To ensure that enough qualified personnel are aboard to operate the lightship safely while off-station."
       }
     ],
     "source": "custom-dataset",
@@ -1515,7 +1515,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the effect of “denunciation” on a state’s existing obligations under the agreement?"
+        "content": "What is the effect of “denunciation” on a state's existing obligations under the agreement?"
       },
       {
         "role": "assistant",
@@ -1543,11 +1543,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role of “Article II” in the treaty?"
+        "content": "What is the role of “Article II” in the treaty?"
       },
       {
         "role": "assistant",
-        "content": "Article II defines the scope of the agreement, specifying that it applies to manned lightships operating away from their designated stations."
+        "content": "Article II defines the scope of the agreement, specifying that it applies to manned lightships operating away from their designated stations."
       }
     ],
     "source": "custom-dataset",
@@ -1557,7 +1557,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the agreement handle “record‑keeping” for off‑station lightships?"
+        "content": "How does the agreement handle “record-keeping” for off-station lightships?"
       },
       {
         "role": "assistant",
@@ -1599,11 +1599,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the purpose of the “seven‑year” provision regarding territorial application?"
+        "content": "What is the purpose of the “seven-year” provision regarding territorial application?"
       },
       {
         "role": "assistant",
-        "content": "To give states a reasonable period to assess the treaty’s impact before deciding to extend or withdraw it from specific territories."
+        "content": "To give states a reasonable period to assess the treaty's impact before deciding to extend or withdraw it from specific territories."
       }
     ],
     "source": "custom-dataset",
@@ -1617,7 +1617,7 @@
       },
       {
         "role": "assistant",
-        "content": "By mandating that off‑station lightships maintain active radio contact with the nearest coastal authority at all times."
+        "content": "By mandating that off-station lightships maintain active radio contact with the nearest coastal authority at all times."
       }
     ],
     "source": "custom-dataset",
@@ -1655,11 +1655,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role of “Article VI” concerning the depositary’s duties?"
+        "content": "What is the role of “Article VI” concerning the depositary's duties?"
       },
       {
         "role": "assistant",
-        "content": "Article VI outlines the depositary’s responsibilities to receive, store, and circulate all treaty-related documents among the parties."
+        "content": "Article VI outlines the depositary's responsibilities to receive, store, and circulate all treaty-related documents among the parties."
       }
     ],
     "source": "custom-dataset",
@@ -1669,11 +1669,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the agreement address “crew welfare” on off‑station lightships?"
+        "content": "How does the agreement address “crew welfare” on off-station lightships?"
       },
       {
         "role": "assistant",
-        "content": "It includes provisions for adequate living conditions, medical care, and rest periods to safeguard crew well‑being."
+        "content": "It includes provisions for adequate living conditions, medical care, and rest periods to safeguard crew well-being."
       }
     ],
     "source": "custom-dataset",
@@ -1683,7 +1683,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of the “Treaty Series No. 13 (1931)” for legal reference?"
+        "content": "What is the significance of the “Treaty Series No. 13 (1931)” for legal reference?"
       },
       {
         "role": "assistant",
@@ -1715,7 +1715,7 @@
       },
       {
         "role": "assistant",
-        "content": "They provide detailed, technical standards that contracting governments must implement and enforce for off‑station lightships."
+        "content": "They provide detailed, technical standards that contracting governments must implement and enforce for off-station lightships."
       }
     ],
     "source": "custom-dataset",
@@ -1729,7 +1729,7 @@
       },
       {
         "role": "assistant",
-        "content": "Through mandatory reporting and the depositary’s role in disseminating notifications, parties stay informed of relevant developments."
+        "content": "Through mandatory reporting and the depositary's role in disseminating notifications, parties stay informed of relevant developments."
       }
     ],
     "source": "custom-dataset",
@@ -1739,11 +1739,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the effect of a “declaration of cessation” on a colony’s obligations?"
+        "content": "What is the effect of a “declaration of cessation” on a colony's obligations?"
       },
       {
         "role": "assistant",
-        "content": "The agreement’s obligations cease to apply to that colony one year after the declaration is received by the depositary."
+        "content": "The agreement's obligations cease to apply to that colony one year after the declaration is received by the depositary."
       }
     ],
     "source": "custom-dataset",
@@ -1767,11 +1767,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of the “seven‑year” clause for territorial applicability?"
+        "content": "What is the significance of the “seven-year” clause for territorial applicability?"
       },
       {
         "role": "assistant",
-        "content": "It offers a structured timeline for states to evaluate and decide on the treaty’s continuation or withdrawal for specific territories."
+        "content": "It offers a structured timeline for states to evaluate and decide on the treaty's continuation or withdrawal for specific territories."
       }
     ],
     "source": "custom-dataset",
@@ -1795,11 +1795,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role of “Article I” in establishing the treaty’s purpose?"
+        "content": "What is the role of “Article I” in establishing the treaty's purpose?"
       },
       {
         "role": "assistant",
-        "content": "Article I states the objective of regulating manned lightships that operate away from their assigned stations for safety of navigation."
+        "content": "Article I states the objective of regulating manned lightships that operate away from their assigned stations for safety of navigation."
       }
     ],
     "source": "custom-dataset",
@@ -1827,7 +1827,7 @@
       },
       {
         "role": "assistant",
-        "content": "A Bachelor’s degree in Civil Engineering or a closely related field."
+        "content": "A Bachelor's degree in Civil Engineering or a closely related field."
       }
     ],
     "source": "custom-dataset",
@@ -1837,11 +1837,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Is a Master’s degree required or optional for this role?"
+        "content": "Is a Master's degree required or optional for this role?"
       },
       {
         "role": "assistant",
-        "content": "A Master’s degree in a related field is desirable but not required."
+        "content": "A Master's degree in a related field is desirable but not required."
       }
     ],
     "source": "custom-dataset",
@@ -1967,7 +1967,7 @@
       },
       {
         "role": "assistant",
-        "content": "Strong problem‑solving and negotiation abilities."
+        "content": "Strong problem-solving and negotiation abilities."
       }
     ],
     "source": "custom-dataset",
@@ -2005,7 +2005,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role’s involvement with change orders?"
+        "content": "What is the role's involvement with change orders?"
       },
       {
         "role": "assistant",
@@ -2145,11 +2145,11 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the position contribute to the department’s strategic goals?"
+        "content": "How does the position contribute to the department's strategic goals?"
       },
       {
         "role": "assistant",
-        "content": "By assisting in planning and managing initiatives that meet the department’s objectives."
+        "content": "By assisting in planning and managing initiatives that meet the department's objectives."
       }
     ],
     "source": "custom-dataset",
@@ -2257,7 +2257,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of overseeing right‑of‑way activities?"
+        "content": "What is the significance of overseeing right-of-way activities?"
       },
       {
         "role": "assistant",
@@ -2289,7 +2289,7 @@
       },
       {
         "role": "assistant",
-        "content": "To address on‑site issues promptly and keep projects moving forward."
+        "content": "To address on-site issues promptly and keep projects moving forward."
       }
     ],
     "source": "custom-dataset",
@@ -2327,7 +2327,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is a typical outcome of the Assistant Director’s oversight of design phases?"
+        "content": "What is a typical outcome of the Assistant Director's oversight of design phases?"
       },
       {
         "role": "assistant",
@@ -2383,7 +2383,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the role’s involvement with procurement?"
+        "content": "What is the role's involvement with procurement?"
       },
       {
         "role": "assistant",
@@ -2439,7 +2439,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "What is the significance of maintaining up‑to‑date technical knowledge?"
+        "content": "What is the significance of maintaining up-to-date technical knowledge?"
       },
       {
         "role": "assistant",
@@ -2537,7 +2537,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the Assistant Director contribute to the department’s customer service standards?"
+        "content": "How does the Assistant Director contribute to the department's customer service standards?"
       },
       {
         "role": "assistant",
@@ -2565,7 +2565,7 @@
     "conversation": [
       {
         "role": "user",
-        "content": "How does the Assistant Director support the engineering director’s strategic initiatives?"
+        "content": "How does the Assistant Director support the engineering director's strategic initiatives?"
       },
       {
         "role": "assistant",
