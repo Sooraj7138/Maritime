@@ -20,7 +20,7 @@ os.makedirs("./LTS_OP", exist_ok=True)
 def ask(prompt):
     client = Groq()
     completion = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="moonshotai/kimi-k2-instruct-0905",
         messages=[
             {
                 "role": "user",
@@ -82,31 +82,53 @@ def main_extractor(file):
         if retries > 0:
             print(f"⚠️ No Q&A pairs found for {file}. Retrying ({retries}/{max_retries})")
         
-        prompt = f"""
-        **You are a maritime domain expert specializing in regulatory compliance. Carefully read the following document and generate exactly 20 unique, behavioral, scenario-based, context-specific question-and-answer exchanges based strictly on its English content. If there is low content or pages in the document, generate only as many as possible, like 5-10 unique exchanges.**
+        # prompt = f"""
+        # **You are a maritime domain expert specializing in regulatory compliance. Carefully read the following document and generate exactly 20 unique, behavioral, scenario-based, context-specific question-and-answer exchanges based strictly on its English content. If there is low content or pages in the document, generate only as many as possible, like 5-10 unique exchanges.**
 
-        **Requirements:**
-        - Do NOT generate factual exchanges; focus solely on compliance audit scenarios.
-        - Each exchange must be behavioral, scenario-based, and context-specific to the document's regulations on pollution prevention, vessel equipment, port facilities, and compliance actions.
-        - Go through the entire English content of the document thoroughly.
-        - Do NOT mention the document name, location, relative path, or any metadata in the exchanges.
-        - The Document name will be {file.split(".")[0]} for reference only.
-        - Each problem (question) must be a compliance scenario: simple, clear, direct, and context-aware (e.g., 'For a 1200 GT inland vessel without oily mixture treatment, what compliance action should the surveyor take?').
-        - For each exchange, provide a step-by-step chain of thought reasoning in a <think> tag, leading to a **Final Answer** with the compliance recommendation boxed in \boxed{{}}.
-        - The final answer inside the box must be concise, 1-2 lines, informative, behavioral, and scenario-based (e.g., 'Issue a notice under Rule 9(ii) and suspend operations until remedied.').
-        - Do NOT repeat or rephrase exchanges; all must be distinct. Do NOT invent information outside the document.
-        - Output must strictly follow the format below, with no extra commentary or numbering.
-        - Analyze the entire English content clearly and thoroughly before generating exchanges.**
-        - Don't miss the main conditions like 20 Exchanges, Thorough Analysis, Strict Format, No Repetition, Behavioral, Scenario-based, Context Awareness, Document Focus.
-        - Do not extract or use other language information; just use English contents only.
+        # **Requirements:**
+        # - Do NOT generate factual exchanges; focus solely on compliance audit scenarios.
+        # - Each exchange must be behavioral, scenario-based, and context-specific to the document's regulations on pollution prevention, vessel equipment, port facilities, and compliance actions.
+        # - Go through the entire English content of the document thoroughly.
+        # - Do NOT mention the document name, location, relative path, or any metadata in the exchanges.
+        # - The Document name will be {file.split(".")[0]} for reference only.
+        # - Each problem (question) must be a compliance scenario: simple, clear, direct, and context-aware (e.g., 'For a 1200 GT inland vessel without oily mixture treatment, what compliance action should the surveyor take?').
+        # - For each exchange, provide a step-by-step chain of thought reasoning in a <think> tag, leading to a **Final Answer**.
+        # - The final answer inside the box must be concise, 1-2 lines, informative, behavioral, and scenario-based (e.g., 'Issue a notice under Rule 9(ii) and suspend operations until remedied.').
+        # - Do NOT repeat or rephrase exchanges; all must be distinct. Do NOT invent information outside the document.
+        # - Output must strictly follow the format below, with no extra commentary or numbering.
+        # - Analyze the entire English content clearly and thoroughly before generating exchanges.**
+        # - Don't miss the main conditions like 20 Exchanges, Thorough Analysis, Strict Format, No Repetition, Behavioral, Scenario-based, Context Awareness, Document Focus.
+        # - Do not extract or use other language information; just use English contents only.
        
+        # Document:
+        # {file_name_path}
+
+        # **Output format (strictly follow):**
+        # Problem: [The scenario-based question here]
+        # Generated Solution: <think>[Step-by-step chain of thought reasoning leading to the answer]  </think> **Final Answer**: [The concise, behavioral, scenario-based final answer here]
+        # Expected Output: [The final compliance recommendation in 1-2 lines]
+        # """
+
+        prompt = f"""
+        You are a maritime domain expert specializing in regulatory compliance. Carefully read the following document and generate exactly 20 unique, behavioral, scenario-based, context-specific question-and-answer exchanges based strictly on its English content. If there is low content or pages in the document, generate only as many as possible (like 5–10 unique exchanges).
+
+        Requirements:
+        - Do NOT generate factual exchanges; focus solely on compliance audit scenarios.
+        - Each exchange must be behavioral, scenario-based, and context-specific to the document’s regulations on pollution prevention, vessel equipment, port facilities, and compliance actions.
+        - Go through the entire English content thoroughly; use only English content.
+        - Do NOT mention the document name, location, relative path, or any metadata in the exchanges.
+        - The document basename is {file.split(".")[0]} (for metadata only, not to be included in exchanges).
+        - Each problem must be a simple, clear, direct compliance scenario (e.g., "For a 1200 GT inland vessel without oily mixture treatment, what compliance action should the surveyor take?").
+        - For each exchange, provide scenario-based question, leading to a concise, behavioral, scenario-based final answer here.
+        - The final answer must be concise (1–2 lines), informative, behavioral, and scenario-based (e.g., "Issue a notice under Rule 9(ii) and suspend operations until remedied.").
+        - All exchanges must be distinct. Do NOT invent information outside the document.
+
         Document:
         {file_name_path}
 
         **Output format (strictly follow):**
-        Problem: [The scenario-based question here]
-        Generated Solution: <think>[Step-by-step chain of thought reasoning leading to the answer]  </think> **Final Answer** \boxed{{[The final compliance recommendation in 1-2 lines]}}
-        Expected Output: [The final compliance recommendation in 1-2 lines]
+        prompt: [Scenario-based compliance question] 
+        solution: [The concise, behavioral, scenario-based final answer here]"
         """
 
         qa_output = ask(prompt)
@@ -115,12 +137,12 @@ def main_extractor(file):
         # print("RAW OUTPUT:\n", qa_output)
 
         # Regex to match the new format
-        pattern = re.compile(r"Problem:\s*(.*?)\s*Generated Solution:\s*(.*?)\s*Expected Output:\s*(.*?)(?=\nProblem:|\Z)", re.DOTALL)
+        pattern = re.compile(r"prompt:\s*(.*?)\s*solution:\s*(.*?)(?=\nprompt:|\Z)", re.DOTALL)
         matches = pattern.findall(qa_output)
         retries += 1
         
     if matches:
-        print(f"✅ Q&A pairs extracted for {file}\n")
+        print(f"✅ Q&A pairs extracted for {file}")
         return matches
     else:
         print(f"❌ Failed to generate Q&A pairs for {file} after {max_retries} retries. Skipping.")
@@ -139,12 +161,12 @@ def prompter(path):
     
         for base, all_matches in base_to_matches.items():
             if all_matches:
-                with open(f"./LTS_OP/new/{base}.csv", "w", newline="", encoding="utf-8") as csvfile:
+                with open(f"./LTS_OP/new1/{base}.csv", "w", newline="", encoding="utf-8") as csvfile:
                     writer = csv.writer(csvfile)
-                    writer.writerow(["expected_output", "problem", "generated_solution"])
-                    for prob, sol, exp in all_matches:
-                        writer.writerow([exp.strip(), prob.strip(), sol.strip()])
-                print(f"✅ Q&A pairs for {base} saved to {base}.csv")
+                    writer.writerow(["prompt", "solution"])
+                    for prob, sol in all_matches:
+                        writer.writerow([prob.strip(), sol.strip()])
+                print(f"✅ Q&A pairs for {base} saved to {base}.csv\n")
             else:
                 print(f"❌ No Q&A pairs for {base}.")
 
