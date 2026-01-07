@@ -20,7 +20,7 @@ os.makedirs("./LTS_OP", exist_ok=True)
 def ask(prompt):
     client = Groq()
     completion = client.chat.completions.create(
-        model="moonshotai/kimi-k2-instruct-0905",
+        model="qwen/qwen3-32b",
         messages=[
             {
                 "role": "user",
@@ -73,7 +73,8 @@ def split_pdf(input_path, output_dir, parts=5):
 def main_extractor(file):
     print(f"|====================Processing file : {file}")                
     # doc_content = read_pdf(f"./{path}/{file}")
-    file_name_path = f"./Maritime Regulations & Rules/{file.split('.')[0]}/{file}"
+    file_name_path = f"./Split_PDFs/{file.split('.')[0]}/{file}"
+    doc_content = read_pdf(file_name_path)
     matches = []
     retries = 0
     max_retries = 6
@@ -82,6 +83,49 @@ def main_extractor(file):
         if retries > 0:
             print(f"⚠️ No Q&A pairs found for {file}. Retrying ({retries}/{max_retries})")
         
+        prompt = f"""
+        **You are a careful, fact-grounded assistant. Read the document below and generate exactly 40 unique question–answer exchanges strictly based on its content. The document is the sole source of truth. Do not use external knowledge, assumptions, or inference beyond what the document explicitly states.**
+
+        Document:
+        {doc_content}
+
+        **Requirements:**
+        - Generate answers strictly from the document; do NOT hallucinate or add unstated facts.
+        - Do Not Mention the document name, location, relative path, or any metadata in the Q&A pairs. Dont even mention the word "document" in the Q&A pairs.
+        - The Document name will be {file.split(".")[0]} for reference only.
+        - Questions: simple, clear, direct, and context-aware (summarize, describe, and analytical styles).
+        - Answers: exactly 2 lines (2 sentences), concise but informative, and strictly factual per the document.
+        - Grounding: Every Q and A must be supported by the document; do not hallucinate or add unstated facts.
+        - Coverage: Spread questions across the document’s sections/topics; avoid clustering on a single point.
+        - Uniqueness: No repetition or paraphrase of the same Q/A; each pair must be distinct.
+        - Terminology: Use the document’s exact terminology for rules, names, figures, and labels; do not invent or normalize terms.
+        - Numbers & citations: Only include numbers, dates, and rule identifiers that appear in the document.
+        - If a detail is ambiguous or missing in the document, do not fill gaps; instead, frame the question and answer to reflect only what is present.
+        - Formatting: Output must strictly follow the format below, with no extra commentary, headers, or numbering.
+
+        **Output format (strictly follow):**
+        Q: ...
+        A: ...
+
+        **Validation rules (implicit, do not print them):**
+        - Each answer must be two sentences on a single line after 'A:'.
+        - No extra blank lines between Q/A pairs.
+        - Exactly 40 Q/A pairs total; do not exceed or fall short.
+        - Content must be verbatim-grounded in the document; remove any pair that cannot be justified by the text.
+
+        Begin.
+        """
+
+        qa_output = ask(prompt)
+
+        # Debug: print raw output
+        # print("RAW OUTPUT:\n", qa_output)
+
+        # Regex that tolerates numbering before and after Q/A:
+        pattern = re.compile(r"(?:\d+\.\s*)?Q\d*:\s*(.*?)\s*A\d*:\s*(.*?)(?=\n(?:\d+\.\s*)?Q\d*:|\Z)", re.DOTALL)
+        matches = pattern.findall(qa_output)
+        retries += 1
+
         # prompt = f"""
         # **You are a maritime domain expert specializing in regulatory compliance. Carefully read the following document and generate exactly 20 unique, behavioral, scenario-based, context-specific question-and-answer exchanges based strictly on its English content. If there is low content or pages in the document, generate only as many as possible, like 5-10 unique exchanges.**
 
@@ -109,48 +153,47 @@ def main_extractor(file):
         # Expected Output: [The final compliance recommendation in 1-2 lines]
         # """
 
-        prompt = f"""
-        You are a maritime domain expert specializing in regulatory compliance. Carefully read the following document and generate exactly 20 unique, behavioral, scenario-based, context-specific question-and-answer exchanges based strictly on its English content. If there is low content or pages in the document, generate only as many as possible (like 5–10 unique exchanges).
+        # prompt = f"""
+        # You are a maritime domain expert specializing in regulatory compliance. Carefully read the following document and generate exactly 20 unique, behavioral, scenario-based, context-specific question-and-answer exchanges based strictly on its English content. If there is low content or pages in the document, generate only as many as possible (like 5–10 unique exchanges).
 
-        Requirements:
-        - Do NOT generate factual exchanges; focus solely on compliance audit scenarios.
-        - Each exchange must be behavioral, scenario-based, and context-specific to the document’s regulations on pollution prevention, vessel equipment, port facilities, and compliance actions.
-        - Go through the entire English content thoroughly; use only English content.
-        - Do NOT mention the document name, location, relative path, or any metadata in the exchanges.
-        - The document basename is {file.split(".")[0]} (for metadata only, not to be included in exchanges).
-        - Each problem must be a simple, clear, direct compliance scenario (e.g., "For a 1200 GT inland vessel without oily mixture treatment, what compliance action should the surveyor take?").
-        - For each exchange, provide scenario-based question, leading to a concise, behavioral, scenario-based final answer here.
-        - The final answer must be concise (1–2 lines), informative, behavioral, and scenario-based (e.g., "Issue a notice under Rule 9(ii) and suspend operations until remedied.").
-        - All exchanges must be distinct. Do NOT invent information outside the document.
+        # Requirements:
+        # - Do NOT generate factual exchanges; focus solely on compliance audit scenarios.
+        # - Each exchange must be behavioral, scenario-based, and context-specific to the document’s regulations on pollution prevention, vessel equipment, port facilities, and compliance actions.
+        # - Go through the entire English content thoroughly; use only English content.
+        # - Do NOT mention the document name, location, relative path, or any metadata in the exchanges.
+        # - The document basename is {file.split(".")[0]} (for metadata only, not to be included in exchanges).
+        # - Each problem must be a simple, clear, direct compliance scenario (e.g., "For a 1200 GT inland vessel without oily mixture treatment, what compliance action should the surveyor take?").
+        # - For each exchange, provide scenario-based question, leading to a concise, behavioral, scenario-based final answer here.
+        # - The final answer must be concise (1–2 lines), informative, behavioral, and scenario-based (e.g., "Issue a notice under Rule 9(ii) and suspend operations until remedied.").
+        # - All exchanges must be distinct. Do NOT invent information outside the document.
 
-        Document:
-        {file_name_path}
+        # Document:
+        # {file_name_path}
 
-        **Output format (strictly follow):**
-        prompt: [Scenario-based compliance question] 
-        solution: [The concise, behavioral, scenario-based final answer here]"
-        """
+        # **Output format (strictly follow):**
+        # prompt: [Scenario-based compliance question] 
+        # solution: [The concise, behavioral, scenario-based final answer here]"
+        # """
 
-        qa_output = ask(prompt)
+        # qa_output = ask(prompt)
 
         # Debug: print raw output
         # print("RAW OUTPUT:\n", qa_output)
 
         # Regex to match the new format
-        pattern = re.compile(r"prompt:\s*(.*?)\s*solution:\s*(.*?)(?=\nprompt:|\Z)", re.DOTALL)
-        matches = pattern.findall(qa_output)
-        retries += 1
+        # pattern = re.compile(r"prompt:\s*(.*?)\s*solution:\s*(.*?)(?=\nprompt:|\Z)", re.DOTALL)
+        # matches = pattern.findall(qa_output)
+        # retries += 1
         
-    if matches:
-        print(f"✅ Q&A pairs extracted for {file}")
-        return matches
-    else:
-        print(f"❌ Failed to generate Q&A pairs for {file} after {max_retries} retries. Skipping.")
-        return []
+        if matches:
+            print(f"✅ Q&A pairs extracted for {file}\n")
+            return matches
+        else:
+            print(f"❌ Failed to generate Q&A pairs for {file} after {max_retries} retries. Skipping.")
+            return []
 
 def prompter(path):
     base_to_matches = defaultdict(list)
-    times = 0
     for file in os.listdir(path):
         if "_part_" in file:
             base = file.split("_part_")[0]
@@ -159,16 +202,20 @@ def prompter(path):
         matches = main_extractor(file)
         base_to_matches[base].extend(matches)
     
-        for base, all_matches in base_to_matches.items():
-            if all_matches:
-                with open(f"./LTS_OP/new1/{base}.csv", "w", newline="", encoding="utf-8") as csvfile:
-                    writer = csv.writer(csvfile)
-                    writer.writerow(["prompt", "solution"])
-                    for prob, sol in all_matches:
-                        writer.writerow([prob.strip(), sol.strip()])
-                print(f"✅ Q&A pairs for {base} saved to {base}.csv\n")
-            else:
-                print(f"❌ No Q&A pairs for {base}.")
+    for base, all_matches in base_to_matches.items():
+        if all_matches:
+            with open(f"./LTS_OP/new1/{base}.csv", "w", newline="", encoding="utf-8") as csvfile:
+                writer = csv.writer(csvfile)
+                # writer.writerow(["prompt", "solution"])
+                # for prob, sol in all_matches:
+                #     writer.writerow([prob.strip(), sol.strip()])
+                writer.writerow(["instruction", "input", "output"])
+                for i, (q, a) in enumerate(all_matches, start=1):
+                    writer.writerow([q.strip(),"", a.strip()])
+            print(f"✅ Q&A pairs for {base} saved to {base}.csv")
+        else:
+            print(f"❌ No Q&A pairs for {base}.")
+
 
 if __name__ == "__main__":
     # main_extractor("Maritime_ops.pdf")
